@@ -12,3 +12,6 @@ we shall get all the icons from the hero icons package that we installed
 
 changing the icons and adding badges
 adjusted some paddings
+
+pagination is added at the bottom of the page but within the main tag
+and the col span has been set to 3
