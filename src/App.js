@@ -1,11 +1,11 @@
 import React from "react";
-import { ProductList } from "./features/product-list/ProductList";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div>
       <div>
-        <ProductList />
+        <Home />
       </div>
     </div>
   );

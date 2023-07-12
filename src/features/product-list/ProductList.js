@@ -39,7 +39,7 @@ const filters = [
     id: "category",
     name: "Category",
     options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
+      { value: "new-arrivals", label: "All Product", checked: false },
       { value: "sale", label: "Sale", checked: false },
       { value: "travel", label: "Travel", checked: true },
       { value: "organization", label: "Organization", checked: false },
@@ -224,9 +224,9 @@ export function ProductList() {
             </Transition.Root>
 
             <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+              <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-14">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-                  New Arrivals
+                  All Products
                 </h1>
 
                 <div className="flex items-center">
@@ -297,10 +297,6 @@ export function ProductList() {
                 aria-labelledby="products-heading"
                 className="pb-24 pt-6"
               >
-                <h2 id="products-heading" className="sr-only">
-                  Products
-                </h2>
-
                 <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                   {/* Filters */}
                   <form className="hidden lg:block">
@@ -369,11 +365,7 @@ export function ProductList() {
                   <div className="lg:col-span-3">
                     {/* displaying product list */}
                     <div className="bg-white">
-                      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-                          Products
-                        </h2>
-
+                      <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
                         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                           {products.map((product) => (
                             <div key={product.id} className="group relative">
