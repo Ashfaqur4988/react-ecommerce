@@ -15,3 +15,12 @@ adjusted some paddings
 
 pagination is added at the bottom of the page but within the main tag
 and the col span has been set to 3
+
+created login, sign up page
+created a new feature auth
+which includes authSlice, authAPI and components folder in which we have login and sign up components. later we can render them inside the pages inside the pages folder
+which includes both pages. The user can log into their account or create an account.
+
+installed react-router-dom
+set the routes for home, login and sign up page
+and used links instead of hrefs for routing in all the other places
