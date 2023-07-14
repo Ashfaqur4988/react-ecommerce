@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
+import ErrorPage from "./pages/ErrorPage";
 
 import {
   createBrowserRouter,
@@ -9,7 +10,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import { Cart } from "./features/cart/Cart";
+import CartPage from "./pages/CartPage";
+import CheckOutPage from "./pages/CheckOutPage";
 
 const router = createBrowserRouter([
   {
@@ -25,9 +27,16 @@ const router = createBrowserRouter([
     element: <SignUpPage></SignUpPage>,
   },
   {
-    //only for testing we shall add cart page later
     path: "/cart",
-    element: <Cart></Cart>,
+    element: <CartPage></CartPage>,
+  },
+  {
+    path: "/checkout",
+    element: <CheckOutPage></CheckOutPage>,
+  },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
 

@@ -24,3 +24,5 @@ which includes both pages. The user can log into their account or create an acco
 installed react-router-dom
 set the routes for home, login and sign up page
 and used links instead of hrefs for routing in all the other places
+
+added a cart page and a cart component. added links to the cart icon and continue shopping link
