@@ -25,4 +25,7 @@ installed react-router-dom
 set the routes for home, login and sign up page
 and used links instead of hrefs for routing in all the other places
 
-added a cart page and a cart component. added links to the cart icon and continue shopping link
+added a cart page and a cart component. added links to the cart icon and continue shopping link. also added the checkout page link
+made the checkout page and edited some of the things that we wanted to change
+
+next we shall make the product details component then render it inside navbar in a new page named ProductDetailPage
