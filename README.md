@@ -37,5 +37,9 @@ then we changed the product list page to show the new data
 
 then created a new data.json in app folder and added the dummy data there for our fetching
 using a package name json server to create a dummy api
-installed it, started the server on port 8080
+installed it, started the server on port 8080 (hyper terminal)
 edited the productAPI file to fetch from the server
+
+we added the reducers to the store file and changed the async thunk function as per the requirement in the productSlice page to fetch the data.
+we selected the part of slice that we wanted to by useSelector hook
+using useEffect hook to do the side effect actions (to fetch the data by using dispatch function)
