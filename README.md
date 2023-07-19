@@ -29,3 +29,13 @@ added a cart page and a cart component. added links to the cart icon and continu
 made the checkout page and edited some of the things that we wanted to change
 
 next we shall make the product details component then render it inside navbar in a new page named ProductDetailPage
+
+change the name of product list folder to product
+
+we copied a dummy data of products from the dummy JSON website
+then we changed the product list page to show the new data
+
+then created a new data.json in app folder and added the dummy data there for our fetching
+using a package name json server to create a dummy api
+installed it, started the server on port 8080
+edited the productAPI file to fetch from the server
