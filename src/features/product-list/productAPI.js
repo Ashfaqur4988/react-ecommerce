@@ -7,3 +7,21 @@ export function fetchAllProduct() {
     resolve({ data });
   });
 }
+
+//fetch filter data API
+export function fetchProductByFilters(filter) {
+  //filter object = {category: "smartphone"}
+  let queryString = "";
+  for (let key in filter) {
+    queryString = queryString + `${key}=${filter[key]}&`;
+  }
+
+  return new Promise(async (resolve) => {
+    // TODO: we will not hard code server URL here
+    const response = await fetch(
+      "http://localhost:8080/products?" + queryString
+    );
+    const data = await response.json();
+    resolve({ data });
+  });
+}

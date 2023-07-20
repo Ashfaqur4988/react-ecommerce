@@ -43,3 +43,12 @@ edited the productAPI file to fetch from the server
 we added the reducers to the store file and changed the async thunk function as per the requirement in the productSlice page to fetch the data.
 we selected the part of slice that we wanted to by useSelector hook
 using useEffect hook to do the side effect actions (to fetch the data by using dispatch function)
+
+checking the categories in our productList file and extracting categories present in the json
+edited and inserted the values of the category filter
+
+adding the filter feature in our app. find the exact location of the filter UI code then add a handler function to it
+added onChange event listeners and passed e,section,option to the handler function.
+we created another api call function in the productAPI to get data by filter. created another asyncThunk in the product slice file. in extra reducers added addCase and gave the asyncFunc. in the productList file useDispatch in the event Handler function to dispatch the created function and to pass the created filter object.
+
+create filter object -> useState will be used. [filter, setFilter] -> filter = empty, setFilter(newFilter). newFilter is created in a variable and then passed to t all the needed functions
