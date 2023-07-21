@@ -11,11 +11,11 @@ export function fetchAllProduct() {
 //fetch filter data API
 export function fetchProductByFilters(filter) {
   //filter object = {category: "smartphone"}
+  //TODO: on server we will support multiple value
   let queryString = "";
   for (let key in filter) {
     queryString = queryString + `${key}=${filter[key]}&`;
   }
-
   return new Promise(async (resolve) => {
     // TODO: we will not hard code server URL here
     const response = await fetch(

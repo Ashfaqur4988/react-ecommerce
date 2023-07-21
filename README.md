@@ -52,3 +52,8 @@ added onChange event listeners and passed e,section,option to the handler functi
 we created another api call function in the productAPI to get data by filter. created another asyncThunk in the product slice file. in extra reducers added addCase and gave the asyncFunc. in the productList file useDispatch in the event Handler function to dispatch the created function and to pass the created filter object.
 
 create filter object -> useState will be used. [filter, setFilter] -> filter = empty, setFilter(newFilter). newFilter is created in a variable and then passed to t all the needed functions
+
+adding the sorting feature:
+changed the fields in sortOptions: price and order. copied the handler function of filter and added the required logic to it using the state for filter only
+
+making exclusive functions for each different JSX. passing all the required states and lists as props from top level to the necessary elements
