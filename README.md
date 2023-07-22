@@ -57,3 +57,10 @@ adding the sorting feature:
 changed the fields in sortOptions: price and order. copied the handler function of filter and added the required logic to it using the state for filter only
 
 making exclusive functions for each different JSX. passing all the required states and lists as props from top level to the necessary elements
+
+added the logic for checked and unchecked: if (e.target.checked) {
+newFilter[section.id] = option.value;
+} else {
+delete newFilter[section.id];
+}
+added fetchAllProductsByFilter(filter) in dispatch so that whenever the filter is empty it will fetch all and whenever the filter is having any value it will fetch the required one

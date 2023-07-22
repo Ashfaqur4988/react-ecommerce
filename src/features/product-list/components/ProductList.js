@@ -272,30 +272,49 @@ export function ProductList() {
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts); //list of products
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [filter, setFilter] = useState({});
+  const [filter, setFilter] = useState({}); //only for filter
+  const [sort, setSort] = useState({}); //only for sort
 
   //filterHandle function
   const handleFilter = (e, section, option) => {
-    const newFilter = { ...filter, [section.id]: option.value };
+    //TODO: on server it will support multiple values
+    console.log(e.target.checked);
+    const newFilter = { ...filter };
+    //logic to uncheck & check
+    if (e.target.checked) {
+      //if checked is true
+      if (newFilter[section.id]) {
+        //if section id already exists
+        newFilter[section.id].push(option.value); //push the value
+      } else {
+        newFilter[section.id] = [option.value]; //create the array in the object and add the values
+      }
+    } else {
+      //if checked is false
+      const index = newFilter[section.id].findIndex((el) => {
+        //find the index and store it
+        return el === option.value;
+      });
+      newFilter[section.id].splice(index, 1); //delete the item from the filter object
+    }
+    console.log({ newFilter });
     setFilter(newFilter);
-    dispatch(fetchProductByFiltersAsync(newFilter));
-    console.log(section.id, option.value);
+    // console.log(section.id, option.value);
   };
-
-  useEffect(() => {
-    dispatch(fetchAllProductAsync());
-  }, [dispatch]);
 
   //sortHandle function
   const handleSort = (e, option) => {
-    const newSortOptions = {
-      ...filter,
+    const newSort = {
       _sort: option.sort,
       _order: option.order,
     };
-    setFilter(newSortOptions);
-    dispatch(fetchProductByFiltersAsync(newSortOptions));
+    console.log({ newSort });
+    setSort(newSort);
   };
+
+  useEffect(() => {
+    dispatch(fetchProductByFiltersAsync({ filter, sort })); //if both empty then it will fetch the entire data
+  }, [dispatch, filter, sort]);
 
   return (
     <div>
