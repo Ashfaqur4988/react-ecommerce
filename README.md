@@ -64,3 +64,13 @@ newFilter[section.id] = option.value;
 delete newFilter[section.id];
 }
 added fetchAllProductsByFilter(filter) in dispatch so that whenever the filter is empty it will fetch all and whenever the filter is having any value it will fetch the required one
+same logic used for sorting and sent through dispatch to the backend API
+
+pagination: the required query string is needed in order to fetch the exact data. so along with filter object and sort object, we added the pagination object
+state for page with default 1 and made a constant file where we saved all our constants
+made the handlePage function, setPage, page states and pass it to the pagination component. make a pagination object and sent it through useEffect.
+made an array of the total_items / itemsPerPage and map it to produce page numbers. page numbers will be index+1 (index starts from 0)
+put the onclick handlePage function there and send the index+1 there
+Json server providing a header X-total-count where the total is given so we shall capture in our API file to get the total
+tackling a problem whenever the filter is selected then we get showing 11 page 5 out of 5 results. to solve this we use another useEffect where the dependencies will be the totalItems and page will set to 1.
+total items will be changed whenever the items in page will become more or less.
