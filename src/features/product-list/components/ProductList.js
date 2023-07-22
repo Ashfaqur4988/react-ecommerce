@@ -329,7 +329,7 @@ export function ProductList() {
   useEffect(() => {
     //whenever the total items will be changed the the page will rerender and page will set to 1
     setPage(1);
-  }, [totalItems]);
+  }, [totalItems, sort]);
 
   return (
     <div>
