@@ -74,3 +74,17 @@ put the onclick handlePage function there and send the index+1 there
 Json server providing a header X-total-count where the total is given so we shall capture in our API file to get the total
 tackling a problem whenever the filter is selected then we get showing 11 page 5 out of 5 results. to solve this we use another useEffect where the dependencies will be the totalItems and page will set to 1.
 total items will be changed whenever the items in page will become more or less.
+
+brand and categories DYNAMIC: convert the categories and brands to json
+create new api calls for brand and category, similarly create new async thunks and selectors for both
+then in the product list page put the selected in the options field of the filters objects
+put the filters object inside the function and then pass the filter as a prop to all the other required components
+make another useEffect to dispatch whenever the product list is fetched the filters should get fetched along with it
+NOTE: remember to format the json file properly
+
+for next page icon we shall add the onclick and make page + 1 but not while in the last page. this should be the restriction to be applied
+
+product details page: added /:id -> implies a variable.
+for the time being added && to all the map function.
+changed product.name to product.title
+changed reviews object as per our requirement

@@ -42,3 +42,30 @@ export function fetchProductByFilters(filter, sort, pagination) {
     resolve({ data: { products: data, totalItems: totalItems } });
   });
 }
+
+// A mock function to mimic making an async request for data for categories
+export function fetchAllCategories() {
+  return new Promise(async (resolve) => {
+    const response = await fetch("http://localhost:8080/category");
+    const data = await response.json();
+    resolve({ data });
+  });
+}
+
+// A mock function to mimic making an async request for data for categories
+export function fetchAllBrands() {
+  return new Promise(async (resolve) => {
+    const response = await fetch("http://localhost:8080/brands");
+    const data = await response.json();
+    resolve({ data });
+  });
+}
+
+// A mock function to mimic making an async request for data for product by Id
+export function fetchProductById(id) {
+  return new Promise(async (resolve) => {
+    const response = await fetch("http://localhost:8080/products/" + id);
+    const data = await response.json();
+    resolve({ data });
+  });
+}
