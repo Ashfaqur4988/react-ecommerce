@@ -88,3 +88,7 @@ product details page: added /:id -> implies a variable.
 for the time being added && to all the map function.
 changed product.name to product.title
 changed reviews object as per our requirement
+added a new api call with endpoint product id, created new async thunk and addCase then selected using the useSelector. then dispatch it inside an useEffect hook and passing the id as parameter.
+
+LOGIN PAGE:
+form handling we are going to use react-hook-form

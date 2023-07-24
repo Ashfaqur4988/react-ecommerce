@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, incrementAsync, selectCount } from "../authSlice";
+import { useForm } from "react-hook-form";
+
 import { Link } from "react-router-dom";
 
 export function SignUp() {
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
+  console.log(errors);
   return (
     <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -22,7 +28,13 @@ export function SignUp() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form
+            noValidate
+            className="space-y-6"
+            onSubmit={handleSubmit((data) => {
+              console.log(data);
+            })}
+          >
             <div>
               <label
                 htmlFor="email"
@@ -33,12 +45,14 @@ export function SignUp() {
               <div className="mt-2">
                 <input
                   id="email"
-                  name="email"
+                  {...register("email", { required: "Email Is Required" })}
                   type="email"
-                  autoComplete="email"
-                  required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {/* for error messages */}
+                {errors.email && (
+                  <p className="text-red-500">{errors.email.message}</p>
+                )}
               </div>
             </div>
 
@@ -55,12 +69,16 @@ export function SignUp() {
               <div className="mt-2">
                 <input
                   id="password"
-                  name="password"
+                  {...register("password", {
+                    required: "Password Is Required",
+                  })}
                   type="password"
-                  autoComplete="current-password"
-                  required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {/* for error messages */}
+                {errors.password && (
+                  <p className="text-red-500">{errors.password.message}</p>
+                )}
               </div>
             </div>
 
@@ -76,13 +94,19 @@ export function SignUp() {
               </div>
               <div className="mt-2">
                 <input
-                  id="confirm-password"
-                  name="password"
+                  id="confirmPassword"
+                  {...register("confirmPassword", {
+                    required: "Confirm Password Is Required",
+                  })}
                   type="password"
-                  autoComplete="current-password"
-                  required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
+                {/* for error messages */}
+                {errors.confirmPassword && (
+                  <p className="text-red-500">
+                    {errors.confirmPassword.message}
+                  </p>
+                )}
               </div>
             </div>
 
