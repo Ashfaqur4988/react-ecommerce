@@ -2338,11 +2338,42 @@
     {
       "email": "demo@demo.com",
       "password": "Demo@123",
+      "addresses": [
+        {
+          "name": "Martin Oddegarrd",
+          "email": "sakdfla@ljhd.com",
+          "phone": "9786986986",
+          "street-name": "sadhfjkslah",
+          "city": "ailasdli",
+          "state": "isfdjoidjogi",
+          "pinCode": "987697"
+        },
+        {
+          "name": "BUkayo",
+          "email": "asdfas@iwhdskfh.com",
+          "phone": "89879808945",
+          "streetName": "hdwshfkshfks",
+          "city": "sdfsdf",
+          "state": "asdfsdf",
+          "pinCode": "546326"
+        }
+      ],
       "id": 1
     },
     {
       "email": "fbf@gmail.com",
       "password": "Qwerty@123",
+      "addresses": [
+        {
+          "name": "partey",
+          "email": "sakjda@skd.com",
+          "phone": "87989898",
+          "streetName": "asjdsjhakj",
+          "city": "ksfkja",
+          "state": "kjslkja",
+          "pinCode": "9089"
+        }
+      ],
       "id": 2
     }
   ],
@@ -2385,7 +2416,7 @@
         "https://i.dummyjson.com/data/products/8/4.jpg",
         "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
       ],
-      "quantity": 2,
+      "quantity": 1,
       "user": 2
     },
     {
@@ -2408,6 +2439,62 @@
       ],
       "quantity": 1,
       "user": 1
+    }
+  ],
+  "orders": [
+    {
+      "items": [
+        {
+          "id": 8,
+          "title": "Microsoft Surface Laptop 4",
+          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+          "price": 1499,
+          "discountPercentage": 10.23,
+          "rating": 4.43,
+          "stock": 68,
+          "brand": "Microsoft Surface",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/8/1.jpg",
+            "https://i.dummyjson.com/data/products/8/2.jpg",
+            "https://i.dummyjson.com/data/products/8/3.jpg",
+            "https://i.dummyjson.com/data/products/8/4.jpg",
+            "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2
+        }
+      ],
+      "totalAmount": 1499,
+      "totalItems": 1,
+      "users": {
+        "email": "fbf@gmail.com",
+        "password": "Qwerty@123",
+        "addresses": [
+          {
+            "name": "partey",
+            "email": "sakjda@skd.com",
+            "phone": "87989898",
+            "streetName": "asjdsjhakj",
+            "city": "ksfkja",
+            "state": "kjslkja",
+            "pinCode": "9089"
+          }
+        ],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "partey",
+        "email": "sakjda@skd.com",
+        "phone": "87989898",
+        "streetName": "asjdsjhakj",
+        "city": "ksfkja",
+        "state": "kjslkja",
+        "pinCode": "9089"
+      },
+      "id": 1
     }
   ]
 }
