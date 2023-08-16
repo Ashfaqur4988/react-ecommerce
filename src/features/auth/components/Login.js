@@ -40,8 +40,6 @@ export function Login() {
               console.log(data);
             })}
             className="space-y-6"
-            action="#"
-            method="POST"
           >
             <div>
               <label

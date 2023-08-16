@@ -3,6 +3,7 @@ import {
   addToCart,
   deleteItemFromCart,
   fetchItemsByUserId,
+  resetCart,
   updateCart,
 } from "./cartAPI";
 
@@ -59,14 +60,14 @@ export const deleteItemFromCartAsync = createAsyncThunk(
 export const resetCartAsync = createAsyncThunk(
   "cart/resetCart",
   async (userId) => {
-    const response = await deleteItemFromCart(userId);
+    const response = await resetCart(userId);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
 );
 
 export const cartSlice = createSlice({
-  name: "cart",
+  name: "cart", //action name
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
@@ -112,8 +113,8 @@ export const cartSlice = createSlice({
         ); //finding index of the item that needs to be deleted. if item.id === to payload.id
         state.items.splice(index, 1); //splice out the item from the existing state
       })
-      .addCase(resetCartAsync.pending, (state, action) => {
-        state.status = "pending";
+      .addCase(resetCartAsync.pending, (state) => {
+        state.status = "loading";
       })
       .addCase(resetCartAsync.fulfilled, (state, action) => {
         state.status = "idle";

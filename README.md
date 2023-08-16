@@ -186,6 +186,9 @@ get all the items of user's cart and then delete each -> mix of both algorithm
 make the async thunk of the reset api
 using a useEffect in orderSuccess page we can dispatch the rest cart api call (every time the order success page will be rendered the useEffect hook will get called each time) and the cart will be cleared
 another dispatch for resetting the current orders
+first time we used a normal reducer because we are not dealing with any async activity resetOrder: (state) => {
+state.orderPlaced = null;
+},
 
 ERROR PAGE:
 created the error page

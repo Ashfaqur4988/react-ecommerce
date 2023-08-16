@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { resetCartAsync } from "../features/cart/cartSlice";
 import { selectLoggedInUser } from "../features/auth/authSlice";
+import { resetOrder } from "../features/order/orderSlice";
 
 const OrderSuccessPage = () => {
   const params = useParams(); //we can fetch the id using the useParam hook
@@ -13,6 +14,7 @@ const OrderSuccessPage = () => {
     //reset cart
     dispatch(resetCartAsync(user.id));
     //reset current order
+    dispatch(resetOrder());
   }, [dispatch, user.id]);
 
   return (
