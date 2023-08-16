@@ -49,3 +49,16 @@ export function deleteItemFromCart(itemId) {
     resolve({ data: { id: itemId } });
   });
 }
+
+//deleting from cart of a specific user
+export function resetCart(userId) {
+  return new Promise(async (resolve) => {
+    //async thunk accepts only promises
+    const response = await fetchItemsByUserId(userId); //get all the items of user's cart
+    const items = response.data;
+    for (let item in items) {
+      await deleteItemFromCart(item.id); //delete items of that user's cart
+    }
+    resolve({ status: "success" });
+  });
+}

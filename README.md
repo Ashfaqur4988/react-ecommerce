@@ -173,3 +173,22 @@ post method API has been created to send data to the server
 in slice pushing the payload inside the order state (array)
 calling our addOrderAsync in the checkoutPage inside Order Now button and passing the created order object with all the required data
 attaching the order reducer to the store
+if address and payment mode selected then pass the order details to the server and redirect to the order successful page
+we need the an order id to mark the order so we are putting the current order into a state variable and getting all the data from there and also fetch the id and use it
+using the fetched order id make a parameterized route and change in the routing accordingly
+we can fetch the id using the useParam hook
+this will help we can add a short circuit that if order placed true then navigate to order success page
+after the Order Now button is clicked we need to clear the cart
+clear cart:
+copy the code of delete items from cart and edit it in the cartAPI
+first we need to fetch the all the items in the user's cart and then delete them
+get all the items of user's cart and then delete each -> mix of both algorithm
+make the async thunk of the reset api
+using a useEffect in orderSuccess page we can dispatch the rest cart api call (every time the order success page will be rendered the useEffect hook will get called each time) and the cart will be cleared
+another dispatch for resetting the current orders
+
+ERROR PAGE:
+created the error page
+
+ORDER SUCCESS PAGE:
+created the order success page inside the pages folder. used the short circuit created {!order && ...}

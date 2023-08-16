@@ -12,7 +12,10 @@ import {
   selectLoggedInUser,
   updateUserAsync,
 } from "../features/auth/authSlice";
-import { createOrderAsync } from "../features/order/orderSlice";
+import {
+  createOrderAsync,
+  selectCurrentOrder,
+} from "../features/order/orderSlice";
 
 const CheckOutPage = () => {
   const [open, setOpen] = useState(true);
@@ -28,6 +31,8 @@ const CheckOutPage = () => {
   const users = useSelector(selectLoggedInUser);
   //selected items fetched in this page
   const items = useSelector(selectItems);
+  //order status
+  const currentOrder = useSelector(selectCurrentOrder);
 
   //state for selected addresses
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -59,16 +64,21 @@ const CheckOutPage = () => {
     setPaymentMethod(e.target.value);
   };
   const handleOrder = (e) => {
-    const order = {
-      items,
-      totalAmount,
-      totalItems,
-      users,
-      paymentMethod,
-      selectedAddress,
-    };
-    dispatch(createOrderAsync(order));
-    //TODO: redirect to order-success page
+    if (selectedAddress && paymentMethod) {
+      const order = {
+        items,
+        totalAmount,
+        totalItems,
+        users,
+        paymentMethod,
+        selectedAddress,
+        status: "pending", //other status can be delivered, received
+      };
+      dispatch(createOrderAsync(order));
+      //TODO: redirect to order-success page
+    } else {
+      alert("Please select address and choose a method!");
+    }
     //TODO: clear cart after order
     //TODO: on server change the stock number of items
   };
@@ -76,6 +86,12 @@ const CheckOutPage = () => {
   return (
     <>
       {!items.length && <Navigate to={"/"} replace={true}></Navigate>}
+      {currentOrder && (
+        <Navigate
+          to={`/order-success/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">

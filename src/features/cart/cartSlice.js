@@ -55,6 +55,16 @@ export const deleteItemFromCartAsync = createAsyncThunk(
   }
 );
 
+//using delete method to update the cart
+export const resetCartAsync = createAsyncThunk(
+  "cart/resetCart",
+  async (userId) => {
+    const response = await deleteItemFromCart(userId);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -101,6 +111,13 @@ export const cartSlice = createSlice({
           (item) => item.id === action.payload.id
         ); //finding index of the item that needs to be deleted. if item.id === to payload.id
         state.items.splice(index, 1); //splice out the item from the existing state
+      })
+      .addCase(resetCartAsync.pending, (state, action) => {
+        state.status = "pending";
+      })
+      .addCase(resetCartAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.items = []; //removing the orders form cart of a particular user
       });
   },
 });

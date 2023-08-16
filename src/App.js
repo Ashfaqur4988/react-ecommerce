@@ -16,6 +16,7 @@ import Protected from "./features/auth/components/Protected";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchItemsByUserIdAsync } from "./features/cart/cartSlice";
 import { selectLoggedInUser } from "./features/auth/authSlice";
+import OrderSuccessPage from "./pages/OrderSuccessPage";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
     element: (
       <Protected>
         <ProductDetailPage></ProductDetailPage>
+      </Protected>
+    ),
+  },
+  {
+    path: "/order-success/:id", //:id for the parameter we use for the the page
+    element: (
+      <Protected>
+        <OrderSuccessPage></OrderSuccessPage>
       </Protected>
     ),
   },
