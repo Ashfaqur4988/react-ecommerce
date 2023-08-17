@@ -195,3 +195,12 @@ created the error page
 
 ORDER SUCCESS PAGE:
 created the order success page inside the pages folder. used the short circuit created {!order && ...}
+
+USER PROFILE:
+in navbar change the links to /profile
+create a new feature folder as user where all the details of user will be present, like profile, orders and etc
+userAPI: fetchLoggedInUser to fetch all the information of the users logged in, important because we shall use this
+API later to get every detail of the user (later we shall reduce the information in the login and sign up and increase
+the information gathered from this api)
+another API to fetch all the orders from the backend of the particular user
+made the async thunks and all the external reducers, now we shall put our slice reducers in the store
