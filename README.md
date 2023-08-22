@@ -204,3 +204,6 @@ API later to get every detail of the user (later we shall reduce the information
 the information gathered from this api)
 another API to fetch all the orders from the backend of the particular user
 made the async thunks and all the external reducers, now we shall put our slice reducers in the store
+useEffect(no dependencies added because need the data every time the page renders) to dispatch the call and fetch the details useSelector
+inside the UI return, map the orders and display, used the cart ui template to render the details and modified them a lot
+made the userOrderPage to put the component
