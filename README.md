@@ -196,7 +196,7 @@ created the error page
 ORDER SUCCESS PAGE:
 created the order success page inside the pages folder. used the short circuit created {!order && ...}
 
-USER PROFILE:
+My Order page:
 in navbar change the links to /profile
 create a new feature folder as user where all the details of user will be present, like profile, orders and etc
 userAPI: fetchLoggedInUser to fetch all the information of the users logged in, important because we shall use this
@@ -206,4 +206,11 @@ another API to fetch all the orders from the backend of the particular user
 made the async thunks and all the external reducers, now we shall put our slice reducers in the store
 useEffect(no dependencies added because need the data every time the page renders) to dispatch the call and fetch the details useSelector
 inside the UI return, map the orders and display, used the cart ui template to render the details and modified them a lot
-made the userOrderPage to put the component
+made the userOrderPage to put the component inside the navbar component to make the navbar appear
+
+USER PROFILE:
+taken the template of the userOrder page and edited, in user profile page the information of the user shall be there and all the addresses of the user
+to bring the info we need to create an API and a new state variable to store all the info of the user
+(for testing purpose we used the loggedInUserInfo)
+added a remove and an edit button in the address field
+need a form to edit the data in our page so we can take the address form in the checkOut page
