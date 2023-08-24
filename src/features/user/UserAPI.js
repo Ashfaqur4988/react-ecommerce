@@ -17,3 +17,21 @@ export function fetchLoggedInUserOrders(userId) {
     resolve({ data });
   });
 }
+
+//posting the new address data in our users API
+export function updateUser(updateData) {
+  return new Promise(async (resolve) => {
+    const response = await fetch(
+      "http://localhost:8080/users/" + updateData.id,
+      {
+        //had to remove s from the https for not working of the code
+        method: "PATCH",
+        body: JSON.stringify(updateData),
+        headers: { "content-type": "application/json" },
+      }
+    );
+    const data = await response.json();
+    // TODO: on server it will only return some info (not password)
+    resolve({ data });
+  });
+}

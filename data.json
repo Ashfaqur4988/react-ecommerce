@@ -2365,13 +2365,13 @@
       "password": "Qwerty@123",
       "addresses": [
         {
-          "name": "partey",
-          "email": "sakjda@skd.com",
-          "phone": "87989898",
-          "streetName": "asjdsjhakj",
-          "city": "ksfkja",
-          "state": "kjslkja",
-          "pinCode": "9089"
+          "name": "Mikel Arteta",
+          "email": "mk@mk.com",
+          "phone": "7878787878",
+          "streetName": "london",
+          "city": "london",
+          "state": "england",
+          "pinCode": "888888"
         }
       ],
       "id": 2
@@ -2550,6 +2550,123 @@
       },
       "status": "pending",
       "id": 3
+    },
+    {
+      "items": [
+        {
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/5/1.jpg",
+            "https://i.dummyjson.com/data/products/5/2.jpg",
+            "https://i.dummyjson.com/data/products/5/3.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 499,
+      "totalItems": 1,
+      "users": {
+        "email": "fbf@gmail.com",
+        "password": "Qwerty@123",
+        "addresses": [
+          {
+            "name": "partey",
+            "email": "sakjda@skd.com",
+            "phone": "87989898",
+            "streetName": "asjdsjhakj",
+            "city": "ksfkja",
+            "state": "kjslkja",
+            "pinCode": "9089"
+          }
+        ],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "partey",
+        "email": "sakjda@skd.com",
+        "phone": "87989898",
+        "streetName": "asjdsjhakj",
+        "city": "ksfkja",
+        "state": "kjslkja",
+        "pinCode": "9089"
+      },
+      "status": "pending",
+      "id": 4
+    },
+    {
+      "items": [
+        {
+          "title": "Women Strip Heel",
+          "description": "Features: Flip-flops, Mid Heel, Comfortable, Striped Heel, Antiskid, Striped",
+          "price": 40,
+          "discountPercentage": 10.83,
+          "rating": 4.02,
+          "stock": 25,
+          "brand": "Sandals Flip Flops",
+          "category": "womens-shoes",
+          "thumbnail": "https://i.dummyjson.com/data/products/48/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/48/1.jpg",
+            "https://i.dummyjson.com/data/products/48/2.jpg",
+            "https://i.dummyjson.com/data/products/48/3.jpg",
+            "https://i.dummyjson.com/data/products/48/4.jpg",
+            "https://i.dummyjson.com/data/products/48/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 40,
+      "totalItems": 1,
+      "users": {
+        "email": "fbf@gmail.com",
+        "password": "Qwerty@123",
+        "addresses": [
+          {
+            "name": "partey",
+            "email": "sakjda@skd.com",
+            "phone": "87989898",
+            "streetName": "asjdsjhakj",
+            "city": "ksfkja",
+            "state": "kjslkja",
+            "pinCode": "9089"
+          },
+          {
+            "name": "Mikel Arteta",
+            "email": "mk@mk.com",
+            "phone": "7878787878",
+            "streetName": "london",
+            "city": "london",
+            "state": "england",
+            "pinCode": "888888"
+          }
+        ],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Mikel Arteta",
+        "email": "mk@mk.com",
+        "phone": "7878787878",
+        "streetName": "london",
+        "city": "london",
+        "state": "england",
+        "pinCode": "888888"
+      },
+      "status": "pending",
+      "id": 5
     }
   ]
 }

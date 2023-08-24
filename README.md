@@ -214,3 +214,13 @@ to bring the info we need to create an API and a new state variable to store all
 (for testing purpose we used the loggedInUserInfo)
 added a remove and an edit button in the address field
 need a form to edit the data in our page so we can take the address form in the checkOut page
+in auth only the login info should be there so we took the update api from the auth api and paste it in the UserAPI
+in the remove button we can use the index of map to splice the element
+in UserSlice made an async action for the updateUserAsync action
+
+dispatch the fetchLoggedInUserAsync in the App.js file because after the login is done the we can get the logged in user info
+change all the instances where selectLoggedInUser is being used to userInfo (userSlice)
+
+handleRemove: we need to remove the address and update the user, make a newUser and copy the details into it and then splice the required address using the map index, then dispatch the data to updateUser async func
+
+handleEdit:

@@ -8,14 +8,12 @@ import {
   selectItems,
   updateCartAsync,
 } from "../features/cart/cartSlice";
-import {
-  selectLoggedInUser,
-  updateUserAsync,
-} from "../features/auth/authSlice";
+import { updateUserAsync } from "../features/auth/authSlice";
 import {
   createOrderAsync,
   selectCurrentOrder,
 } from "../features/order/orderSlice";
+import { selectUserInfo } from "../features/user/UserSlice";
 
 const CheckOutPage = () => {
   const [open, setOpen] = useState(true);
@@ -28,7 +26,7 @@ const CheckOutPage = () => {
   } = useForm();
 
   //list of addresses
-  const users = useSelector(selectLoggedInUser);
+  const users = useSelector(selectUserInfo);
   //selected items fetched in this page
   const items = useSelector(selectItems);
   //order status

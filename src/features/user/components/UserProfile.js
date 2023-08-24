@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectLoggedInUser } from "../../auth/authSlice";
+import { selectUserInfo, updateUserAsync } from "../UserSlice";
 
 export function UserProfile() {
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
   const dispatch = useDispatch();
 
-  const handleEdit = () => {};
+  const handleEdit = (e, index) => {};
 
-  const handleRemove = () => {};
+  const handleRemove = (e, index) => {
+    const newUser = { ...user, addresses: [...user.addresses] }; //for shallow copy issue, which means coping a user
+    //detail which is being fetched and going into deep for the addresses part as it is nested inside
+    newUser.addresses.splice(index, 1); //using the index to locate the address and remove it
+    dispatch(updateUserAsync(newUser));
+  };
 
   return (
     <div>
@@ -22,9 +27,9 @@ export function UserProfile() {
 
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
           <p className="mt-0.5 text-sm text-gray-500">Your Address:</p>
-          {user.addresses.map((address) => (
+          {user.addresses.map((address, index) => (
             <div
-              // key={index}
+              key={index}
               className="flex justify-between gap-x-6 py-5 border-solid border-2 border-gray-200 px-5 my-2"
             >
               <div className="flex gap-x-4 ">
@@ -50,14 +55,14 @@ export function UserProfile() {
               </div>
               <div className="hidden sm:flex sm:flex-col sm:items-end">
                 <button
-                  onClick={(e) => handleEdit(e, address.id)}
+                  onClick={(e) => handleEdit(e, index)}
                   type="button"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Edit
                 </button>
                 <button
-                  onClick={(e) => handleRemove(e, address.id)}
+                  onClick={(e) => handleRemove(e, index)}
                   type="button"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >

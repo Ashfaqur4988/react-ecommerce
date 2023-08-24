@@ -1,8 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchLoggedInUser, fetchLoggedInUserOrders } from "./UserAPI";
+import {
+  fetchLoggedInUser,
+  fetchLoggedInUserOrders,
+  updateUser,
+} from "./UserAPI";
 
 const initialState = {
-  userInfo: null,
+  userInfo: null, // this info will be used in case of detailed user info, where auth will only be used for
+  //loggedInUser id etc checks
   status: "idle",
   userOrders: [],
 };
@@ -22,6 +27,16 @@ export const fetchLoggedInUserOrdersAsync = createAsyncThunk(
   "user/fetchLoggedInUserOrders",
   async (id) => {
     const response = await fetchLoggedInUserOrders(id);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
+//async thunk for async calls for update user info
+export const updateUserAsync = createAsyncThunk(
+  "user/updateUser",
+  async (updateData) => {
+    const response = await updateUser(updateData);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -53,6 +68,13 @@ export const userSlice = createSlice({
       .addCase(fetchLoggedInUserOrdersAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.userOrders = action.payload; // user orders info (we did not use push because we shall be pushing data just for one time)
+      })
+      .addCase(updateUserAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(updateUserAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.userOrders = action.payload; //
       });
   },
 });

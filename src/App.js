@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -18,8 +13,8 @@ import { fetchItemsByUserIdAsync } from "./features/cart/cartSlice";
 import { selectLoggedInUser } from "./features/auth/authSlice";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import UserOrdersPage from "./pages/UserOrdersPage";
-import { UserProfile } from "./features/user/components/UserProfile";
 import UserProfilePage from "./pages/UserProfilePage";
+import { fetchLoggedInUsersAsync } from "./features/user/UserSlice";
 
 const router = createBrowserRouter([
   {
@@ -97,7 +92,8 @@ function App() {
   const user = useSelector(selectLoggedInUser);
   useEffect(() => {
     if (user) {
-      dispatch(fetchItemsByUserIdAsync(user.id));
+      dispatch(fetchItemsByUserIdAsync(user.id)); //to fetch the user items at the time of login success
+      dispatch(fetchLoggedInUsersAsync(user.id)); //to fetch the user data at the time of login success
     }
   }, [dispatch, user]);
   return (
