@@ -224,3 +224,13 @@ change all the instances where selectLoggedInUser is being used to userInfo (use
 handleRemove: we need to remove the address and update the user, make a newUser and copy the details into it and then splice the required address using the map index, then dispatch the data to updateUser async func
 
 handleEdit:
+took the template from the checkout page and edited as per requirement, in handle submit the inside dispatch the new handleEdit is placed and inside handleEdit the new address is placed the older one removed
+made a state variable initially -1 and whenever the edit button will be clicked then the variable will be equal to the selected address index and the form will show
+the form is wrapped around a conditional render depending on the state variable
+after updating the address the
+changed the approach as we need to work on 2 things, 1 set values (using setValue) and 2 changing the state variable
+inside the button the variable first set to index in the setter function and then the values to be set using setValue function
+added a new button cancel to remove the form by setting the state variable as -1
+
+add new address button:
+used the same form and reset it to make it empty, used state variable to show and hide the form, use the same logic that used in the edit form to push the changes
