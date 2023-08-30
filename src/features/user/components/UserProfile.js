@@ -19,10 +19,10 @@ export function UserProfile() {
     formState: { errors },
   } = useForm();
 
-  const handleEdit = (addressUpdate, index) => {
+  const handleEdit = (address, index) => {
     const newUser = { ...user, addresses: [...user.addresses] }; //for shallow copy issue, which means coping a user
     //detail which is being fetched and going into deep for the addresses part as it is nested inside
-    newUser.addresses.splice(index, 1, addressUpdate); //using the index to locate the address and remove it and
+    newUser.addresses.splice(index, 1, address); //using the index to locate the address and remove it and
     //place the new data there
     dispatch(updateUserAsync(newUser));
     setSelectedEditIndex(-1); //after completion of edit the form should disappear
@@ -36,8 +36,10 @@ export function UserProfile() {
   };
 
   const handleEditForm = (e, index) => {
-    console.log(index);
     setSelectedEditIndex(index);
+    setShowAddressForm(false);
+    console.log(index);
+
     const address = user.addresses[index];
     setValue("name", address.name);
     setValue("email", address.email);
@@ -254,8 +256,8 @@ export function UserProfile() {
                 <form
                   className="bg-white px-5 py-5 mt-12"
                   noValidate
-                  onSubmit={handleSubmit((addressUpdate, index) => {
-                    handleEdit(addressUpdate, index);
+                  onSubmit={handleSubmit((address) => {
+                    handleEdit(address, index);
                     console.log(index);
                     reset();
                   })}
@@ -413,7 +415,7 @@ export function UserProfile() {
                       <button
                         onClick={(e) => setSelectedEditIndex(-1)}
                         type="submit"
-                        className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        className="rounded-md bg-grey-600 px-3 py-2 text-sm font-semibold text-black shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
                         Cancel
                       </button>

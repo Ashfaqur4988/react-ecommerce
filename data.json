@@ -2341,12 +2341,12 @@
       "addresses": [
         {
           "name": "Martin Oddegarrd",
-          "email": "sakdfla@ljhd.com",
-          "phone": "9786986986",
-          "street-name": "sadhfjkslah",
-          "city": "ailasdli",
-          "state": "isfdjoidjogi",
-          "pinCode": "987697"
+          "email": "asdfas@iwhdskfh.com",
+          "phone": "89879808945",
+          "streetName": "hdwshfkshfks",
+          "city": "sdfsdf",
+          "state": "asdfsdf",
+          "pinCode": "546326"
         },
         {
           "name": "BUkayo",
@@ -2366,12 +2366,12 @@
       "addresses": [
         {
           "name": "Mikel Arteta",
-          "email": "sdfsad",
-          "phone": "7689887691",
-          "streetName": "dfasdf",
-          "city": "sadf",
-          "state": "asdf",
-          "pinCode": "78798"
+          "email": "sadjkflak@sldkj.com",
+          "phone": "987987987",
+          "streetName": "sdfjk",
+          "city": "skj",
+          "state": "paow",
+          "pinCode": "1010101"
         },
         {
           "name": "Gabriel Jesus",
@@ -2381,12 +2381,39 @@
           "city": "sadf",
           "state": "asdf",
           "pinCode": "78798"
+        },
+        {
+          "name": "Aorons Ramsdale V2",
+          "email": "sadjkflak@sldkj.com",
+          "phone": "987987987",
+          "streetName": "sdfjk",
+          "city": "skj",
+          "state": "paow",
+          "pinCode": "1010101"
         }
       ],
       "id": 2
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "title": "Elegant Female Pearl Earrings",
+      "description": "Elegant Female Pearl Earrings Set Zircon Pearl Earings Women Party Accessories 9 Pairs/Set",
+      "price": 30,
+      "discountPercentage": 12.8,
+      "rating": 4.74,
+      "stock": 16,
+      "brand": "Fashion Jewellery",
+      "category": "womens-jewellery",
+      "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/79/1.jpg"
+      ],
+      "quantity": 1,
+      "user": 2,
+      "id": 1
+    }
+  ],
   "orders": [
     {
       "items": [
@@ -2676,6 +2703,196 @@
       },
       "status": "pending",
       "id": 5
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/9/1.jpg",
+            "https://i.dummyjson.com/data/products/9/2.png",
+            "https://i.dummyjson.com/data/products/9/3.png",
+            "https://i.dummyjson.com/data/products/9/4.jpg",
+            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 1099,
+      "totalItems": 1,
+      "users": {
+        "email": "fbf@gmail.com",
+        "password": "Qwerty@123",
+        "addresses": [
+          {
+            "name": "Mikel Arteta",
+            "email": "sdfsad",
+            "phone": "7689887691",
+            "streetName": "dfasdf",
+            "city": "sadf",
+            "state": "asdf",
+            "pinCode": "78798"
+          },
+          {
+            "name": "Gabriel Jesus",
+            "email": "sdfsad",
+            "phone": "768988769",
+            "streetName": "dfasdf",
+            "city": "sadf",
+            "state": "asdf",
+            "pinCode": "78798"
+          }
+        ],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Gabriel Jesus",
+        "email": "sdfsad",
+        "phone": "768988769",
+        "streetName": "dfasdf",
+        "city": "sadf",
+        "state": "asdf",
+        "pinCode": "78798"
+      },
+      "status": "pending",
+      "id": 6
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "users": {
+        "email": "demo@demo.com",
+        "password": "Demo@123",
+        "addresses": [
+          {
+            "name": "Martin Oddegarrd",
+            "email": "sakdfla@ljhd.com",
+            "phone": "9786986986",
+            "street-name": "sadhfjkslah",
+            "city": "ailasdli",
+            "state": "isfdjoidjogi",
+            "pinCode": "987697"
+          },
+          {
+            "name": "BUkayo",
+            "email": "asdfas@iwhdskfh.com",
+            "phone": "89879808945",
+            "streetName": "hdwshfkshfks",
+            "city": "sdfsdf",
+            "state": "asdfsdf",
+            "pinCode": "546326"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Martin Oddegarrd",
+        "email": "sakdfla@ljhd.com",
+        "phone": "9786986986",
+        "street-name": "sadhfjkslah",
+        "city": "ailasdli",
+        "state": "isfdjoidjogi",
+        "pinCode": "987697"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Leather Strap Skeleton Watch",
+          "description": "Leather Strap Skeleton Watch for Men - Stylish and Latest Design",
+          "price": 46,
+          "discountPercentage": 10.2,
+          "rating": 4.98,
+          "stock": 61,
+          "brand": "Strap Skeleton",
+          "category": "mens-watches",
+          "thumbnail": "https://i.dummyjson.com/data/products/64/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/64/1.jpg",
+            "https://i.dummyjson.com/data/products/64/2.webp",
+            "https://i.dummyjson.com/data/products/64/3.jpg",
+            "https://i.dummyjson.com/data/products/64/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 46,
+      "totalItems": 1,
+      "users": {
+        "email": "demo@demo.com",
+        "password": "Demo@123",
+        "addresses": [
+          {
+            "name": "Martin Oddegarrd",
+            "email": "sakdfla@ljhd.com",
+            "phone": "9786986986",
+            "street-name": "sadhfjkslah",
+            "city": "ailasdli",
+            "state": "isfdjoidjogi",
+            "pinCode": "987697"
+          },
+          {
+            "name": "BUkayo",
+            "email": "asdfas@iwhdskfh.com",
+            "phone": "89879808945",
+            "streetName": "hdwshfkshfks",
+            "city": "sdfsdf",
+            "state": "asdfsdf",
+            "pinCode": "546326"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "BUkayo",
+        "email": "asdfas@iwhdskfh.com",
+        "phone": "89879808945",
+        "streetName": "hdwshfkshfks",
+        "city": "sdfsdf",
+        "state": "asdfsdf",
+        "pinCode": "546326"
+      },
+      "status": "pending",
+      "id": 8
     }
   ]
 }

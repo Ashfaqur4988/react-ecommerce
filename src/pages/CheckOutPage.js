@@ -8,7 +8,7 @@ import {
   selectItems,
   updateCartAsync,
 } from "../features/cart/cartSlice";
-import { updateUserAsync } from "../features/auth/authSlice";
+import { updateUserAsync } from "../features/user/UserSlice";
 import {
   createOrderAsync,
   selectCurrentOrder,
