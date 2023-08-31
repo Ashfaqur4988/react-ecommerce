@@ -35,3 +35,10 @@ export function checkUser(loginInfo) {
     }
   });
 }
+
+//API call for signOut
+export function signOut() {
+  return new Promise(async (resolve) => {
+    resolve({ data: "success" });
+  });
+}

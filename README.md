@@ -234,3 +234,15 @@ added a new button cancel to remove the form by setting the state variable as -1
 
 add new address button:
 used the same form and reset it to make it empty, used state variable to show and hide the form, use the same logic that used in the edit form to push the changes
+
+Sign Out functionality:
+in authAPI a new function to get the user.id and remove it from the state variable, make the state variable null
+added the new api and the new action in the slice
+making a new component to just dispatch the action and condition is to delay the navigation to login page after the user info is null
+changed the path to /logout in the navbar
+add the logout component in the app.js
+
+Forgot Password:
+new page and a component are being made
+reused the login page code and kept only input field and the button
+added route in the app.js
