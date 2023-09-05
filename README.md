@@ -246,3 +246,16 @@ Forgot Password:
 new page and a component are being made
 reused the login page code and kept only input field and the button
 added route in the app.js
+
+Admin panel:
+first in create user role property has been added 'user' or 'admin'
+make a new protectedAdmin component where it will check whether the user exists or not and checks for the role
+depending on the role it will redirect to specific routes
+making a new feature ADMIN
+created the new AdminProductDetails.js AdminProductList.js and corresponding landing pages in the pages folder
+AdminProductDetails will contain all the product specific detail (currently the template is of ProductDetails)
+AdminProductList will contain all the product specific detail (currently the template is of ProductList)
+added a condition in the user profile js file that only admin can see the role in frontEnd
+add admin link in the menu section in the navbar & changing the hrefs to links
+also changed the navigation and added admin and user booleans
+now changed the link to /admin
