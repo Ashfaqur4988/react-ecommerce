@@ -268,3 +268,9 @@ to submit the data to an api to post it in the product json, use the product API
 then push the gathered data in the products state variable
 Edit existing Products:
 use the same form but the path will have a parameter that is the ID to edit the particular product
+link is added in place of button in the AdmProdList page
+extracting the id in product form page and using useEffect fetching the data of that corresponding id
+calling fetchProductById inside useEffect() all these steps inside the product form file
+we are using the same file to get 2 actions done
+making new slice and new api for this function (always find the index first in the splice to update it or in any other logic)
+making a new reducer to reset the form data whenever we want to add a new product

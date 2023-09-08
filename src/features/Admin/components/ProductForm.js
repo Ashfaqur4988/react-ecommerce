@@ -3,21 +3,58 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addProductAsync,
+  clearSelectedProducts,
+  fetchProductByIdAsync,
   selectBrands,
   selectCategory,
+  selectedProductId,
+  updateProductAsync,
 } from "../../product-list/productSlice";
+import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const ProductForm = () => {
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm();
 
   const brands = useSelector(selectBrands); //list of brands
   const categories = useSelector(selectCategory); //list of categories
   const dispatch = useDispatch();
+  const selectedProduct = useSelector(selectedProductId);
+  const params = useParams();
+
+  //calling again here just to be sure and get all the details of the selected id
+  useEffect(() => {
+    if (params.id) {
+      dispatch(fetchProductByIdAsync(params.id));
+    } else {
+      dispatch(clearSelectedProducts());
+    }
+  }, [dispatch, params.id]);
+
+  //to set the values in the editing form
+  useEffect(() => {
+    if (selectedProduct && params.id) {
+      setValue("title", selectedProduct.title);
+      setValue("description", selectedProduct.description);
+      setValue("price", selectedProduct.price);
+      setValue("stock", selectedProduct.stock);
+      setValue("discountPercentage", selectedProduct.discountPercentage);
+      setValue("brand", selectedProduct.brand);
+      setValue("category", selectedProduct.category);
+      setValue("thumbnail", selectedProduct.thumbnail);
+      setValue("image1", selectedProduct.images[0]);
+      setValue("image2", selectedProduct.images[1]);
+      setValue("image3", selectedProduct.images[2]);
+      setValue("image4", selectedProduct.images[3]);
+    }
+  }, [selectedProduct, setValue, params]);
 
   return (
     <form
@@ -33,15 +70,30 @@ const ProductForm = () => {
           product.image4,
           product.thumbnail,
         ];
+        product.rating = 0;
         delete product["image1"];
         delete product["image2"];
         delete product["image3"];
         delete product["image4"];
+        //converting to numbers
+        product.price = +product.price;
+        product.stock = +product.stock;
+        product.discountPercentage = +product.discountPercentage;
         //object creation ended
 
         console.log(product);
 
-        dispatch(addProductAsync(product));
+        //if condition to check whether to update or to add a new product
+        if (params.id) {
+          product.id = params.id; //assigning the id which is required to be changed
+          product.rating = product.rating || 0;
+          dispatch(updateProductAsync(product));
+          reset();
+        } else {
+          dispatch(addProductAsync(product));
+          reset();
+          //TODO: after successfully adding product, show message
+        }
       })}
     >
       <div className="space-y-12 bg-white p-12">
@@ -402,12 +454,12 @@ const ProductForm = () => {
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button
-          type="button"
+        <Link
+          to={"/admin"}
           className="text-sm font-semibold leading-6 text-gray-900"
         >
           Cancel
-        </button>
+        </Link>
         <button
           type="submit"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

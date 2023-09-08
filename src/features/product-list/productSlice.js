@@ -6,6 +6,7 @@ import {
   fetchAllCategories,
   fetchProductById,
   addProduct,
+  updateProduct,
 } from "./productAPI";
 
 const initialState = {
@@ -81,13 +82,24 @@ export const addProductAsync = createAsyncThunk(
   }
 );
 
+//for updating existing products
+export const updateProductAsync = createAsyncThunk(
+  "product/updateProduct",
+  async (update) => {
+    const response = await updateProduct(update);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
 export const productSlice = createSlice({
   name: "product",
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    //traditional reducer to clear the form
+    clearSelectedProducts: (state) => {
+      state.selectedProduct = null;
     },
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -136,11 +148,22 @@ export const productSlice = createSlice({
       .addCase(addProductAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.products.push(action.payload);
+      })
+      .addCase(updateProductAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(updateProductAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        const index = state.products.findIndex(
+          (product) => product.id === action.payload.id
+        );
+        state.products[index] = action.payload;
       });
   },
 });
 
-export const { increment } = productSlice.actions;
+//exporting traditional actions
+export const { clearSelectedProducts } = productSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
