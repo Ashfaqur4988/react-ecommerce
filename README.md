@@ -259,3 +259,12 @@ added a condition in the user profile js file that only admin can see the role i
 add admin link in the menu section in the navbar & changing the hrefs to links
 also changed the navigation and added admin and user booleans
 now changed the link to /admin
+In the admin product list page, provide an edit button to edit the products as admin
+add new product button on top of product grid which redirects to the product form page
+made all the js and page components of the product form
+Add New Products:
+in product form used the form validation and manipulated a lot of fields and data
+to submit the data to an api to post it in the product json, use the product API and create one add product API
+then push the gathered data in the products state variable
+Edit existing Products:
+use the same form but the path will have a parameter that is the ID to edit the particular product
