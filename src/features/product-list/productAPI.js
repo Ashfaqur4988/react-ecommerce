@@ -14,6 +14,7 @@ export function fetchProductByFilters(filter, sort, pagination) {
   //sort object = {_sort: "price", _order:"desc"}
   //pagination = {_page:1, _limit:10} //_page=1&_limit=10
   //TODO: on server we will support multiple value
+  // TODO: Server will filter the deleted products (will not send)
   let queryString = ""; //making an empty string
   for (let key in filter) {
     //traversing through the objects

@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createOrder } from "./orderAPI";
+import { createOrder, fetchAllOrders } from "./orderAPI";
 
 const initialState = {
   orders: [],
   status: "idle",
   orderPlaced: null,
+  totalCount: 0,
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -16,6 +17,15 @@ export const createOrderAsync = createAsyncThunk(
   "orders/createOrder",
   async (orderData) => {
     const response = await createOrder(orderData);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
+export const fetchAllOrdersAsync = createAsyncThunk(
+  "orders/fetchAllOrders",
+  async (pagination) => {
+    const response = await fetchAllOrders(pagination);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -42,6 +52,14 @@ export const orderSlice = createSlice({
         state.status = "idle";
         state.orders.push(action.payload);
         state.orderPlaced = action.payload;
+      })
+      .addCase(fetchAllOrdersAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchAllOrdersAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.orders = action.payload.orders;
+        state.totalCount = action.payload.totalOrders;
       });
   },
 });
@@ -49,5 +67,8 @@ export const orderSlice = createSlice({
 export const { resetOrder } = orderSlice.actions; //exporting the resetOrder action
 
 export const selectCurrentOrder = (state) => state.order.orderPlaced;
+
+export const selectAllOrders = (state) => state.order.orders;
+export const selectTotalOrders = (state) => state.order.totalCount;
 
 export default orderSlice.reducer;

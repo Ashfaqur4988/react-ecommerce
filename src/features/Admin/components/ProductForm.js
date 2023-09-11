@@ -56,6 +56,13 @@ const ProductForm = () => {
     }
   }, [selectedProduct, setValue, params]);
 
+  const handleDelete = () => {
+    const product = { ...selectedProduct }; //selecting the products by id and getting the information
+    product.deleted = true; //adding a new property to it, deleted flag, because from admin side deletion is not done
+    // for the history of data
+    dispatch(updateProductAsync(product)); //updating the deleted flag in the product in the server
+  };
+
   return (
     <form
       noValidate
@@ -460,6 +467,14 @@ const ProductForm = () => {
         >
           Cancel
         </Link>
+        {selectedProduct && (
+          <button
+            onClick={handleDelete}
+            className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Delete
+          </button>
+        )}
         <button
           type="submit"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

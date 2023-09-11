@@ -274,3 +274,18 @@ calling fetchProductById inside useEffect() all these steps inside the product f
 we are using the same file to get 2 actions done
 making new slice and new api for this function (always find the index first in the splice to update it or in any other logic)
 making a new reducer to reset the form data whenever we want to add a new product
+Delete Product:
+delete button added with a condition that only will be seen when entered through the edit button not add button
+when selected a product to edit only then this delete button will apply
+selecting the products by id and getting the information
+adding a new property to it, deleted flag, because from admin side deletion is not done for the history of data
+updating the deleted flag in the product in the server (in the database)
+
+Admin Orders Panel:
+admin can see all the orders coming to the server
+new component is created
+a tailwind template is taken from the tailwind components website
+edited the template
+make a new api to fetch all the orders from the backend in orderApi file
+new async thunk for the corresponding
+in the UI putting it inside a mapping func to layOut the structure

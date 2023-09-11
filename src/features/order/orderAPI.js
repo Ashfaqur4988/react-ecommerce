@@ -11,3 +11,20 @@ export function createOrder(orderData) {
     resolve({ data });
   });
 }
+
+// A mock function to mimic making an async request to fetch all data of
+export function fetchAllOrders(pagination) {
+  //pagination = {_page:1, _limit:10} //_page=1&_limit=10
+  let queryString = ""; //making an empty string
+
+  for (let key in pagination) {
+    queryString = queryString + `${key}=${pagination[key]}&`;
+  }
+  return new Promise(async (resolve) => {
+    // TODO: we will not hard code server URL here
+    const response = await fetch("http://localhost:8080/orders?" + queryString);
+    const data = await response.json();
+    const totalOrders = await response.headers.get("X-Total-Count");
+    resolve({ data: { orders: data, totalOrders: totalOrders } });
+  });
+}
