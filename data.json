@@ -2379,6 +2379,15 @@
           "city": "sdfsdf",
           "state": "asdfsdf",
           "pinCode": "546326"
+        },
+        {
+          "name": "ZUbamendi",
+          "email": "asjhdfk@sldkja.com",
+          "phone": "99089808",
+          "streetName": "asmd",
+          "city": "sdfas",
+          "state": "sakd",
+          "pinCode": "878879"
         }
       ],
       "id": 1
@@ -2498,7 +2507,7 @@
         "state": "kjslkja",
         "pinCode": "9089"
       },
-      "status": "pending",
+      "status": "delivered",
       "id": 1
     },
     {
@@ -2924,6 +2933,208 @@
       },
       "status": "pending",
       "id": 8
+    },
+    {
+      "items": [
+        {
+          "title": "Fashion Magnetic Wrist Watch",
+          "description": "Buy this awesome The product is originally manufactured by the company and it's a top selling product with a very reasonable",
+          "price": 60,
+          "discountPercentage": 16.69,
+          "rating": 4.03,
+          "stock": 46,
+          "brand": "Eastern Watches",
+          "category": "womens-watches",
+          "thumbnail": "https://i.dummyjson.com/data/products/67/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/67/1.jpg",
+            "https://i.dummyjson.com/data/products/67/2.jpg",
+            "https://i.dummyjson.com/data/products/67/3.jpg",
+            "https://i.dummyjson.com/data/products/67/4.jpg",
+            "https://i.dummyjson.com/data/products/67/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 50,
+      "totalItems": 1,
+      "users": {
+        "email": "demo@demo.com",
+        "password": "Demo@123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Martin Oddegarrd",
+            "email": "asdfas@iwhdskfh.com",
+            "phone": "89879808945",
+            "streetName": "hdwshfkshfks",
+            "city": "sdfsdf",
+            "state": "asdfsdf",
+            "pinCode": "546326"
+          },
+          {
+            "name": "BUkayo",
+            "email": "asdfas@iwhdskfh.com",
+            "phone": "89879808945",
+            "streetName": "hdwshfkshfks",
+            "city": "sdfsdf",
+            "state": "asdfsdf",
+            "pinCode": "546326"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Martin Oddegarrd",
+        "email": "asdfas@iwhdskfh.com",
+        "phone": "89879808945",
+        "streetName": "hdwshfkshfks",
+        "city": "sdfsdf",
+        "state": "asdfsdf",
+        "pinCode": "546326"
+      },
+      "status": "pending",
+      "id": 9
+    },
+    {
+      "items": [
+        {
+          "title": "formal offices shoes",
+          "description": "Pattern Type: Solid, Material: PU, Toe Shape: Pointed Toe ,Outsole Material: Rubber",
+          "price": 57,
+          "discountPercentage": 12,
+          "rating": 4.41,
+          "stock": 68,
+          "brand": "The Warehouse",
+          "category": "mens-shoes",
+          "thumbnail": "https://i.dummyjson.com/data/products/58/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/58/1.jpg",
+            "https://i.dummyjson.com/data/products/58/2.jpg",
+            "https://i.dummyjson.com/data/products/58/3.jpg",
+            "https://i.dummyjson.com/data/products/58/4.jpg",
+            "https://i.dummyjson.com/data/products/58/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 82,
+      "totalItems": 2,
+      "users": {
+        "email": "demo@demo.com",
+        "password": "Demo@123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Martin Oddegarrd",
+            "email": "asdfas@iwhdskfh.com",
+            "phone": "89879808945",
+            "streetName": "hdwshfkshfks",
+            "city": "sdfsdf",
+            "state": "asdfsdf",
+            "pinCode": "546326"
+          },
+          {
+            "name": "BUkayo",
+            "email": "asdfas@iwhdskfh.com",
+            "phone": "89879808945",
+            "streetName": "hdwshfkshfks",
+            "city": "sdfsdf",
+            "state": "asdfsdf",
+            "pinCode": "546326"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "BUkayo",
+        "email": "asdfas@iwhdskfh.com",
+        "phone": "89879808945",
+        "streetName": "hdwshfkshfks",
+        "city": "sdfsdf",
+        "state": "asdfsdf",
+        "pinCode": "546326"
+      },
+      "status": "pending",
+      "id": 10
+    },
+    {
+      "items": [
+        {
+          "title": "LouisWill Men Sunglasses",
+          "description": "LouisWill Men Sunglasses Polarized Sunglasses UV400 Sunglasses Day Night Dual Use Safety Driving Night Vision Eyewear AL-MG Frame Sun Glasses with Free Box for Drivers",
+          "price": 50,
+          "discountPercentage": 11.27,
+          "rating": 4.98,
+          "stock": 92,
+          "brand": "LouisWill",
+          "category": "sunglasses",
+          "thumbnail": "https://i.dummyjson.com/data/products/85/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/85/1.jpg",
+            "https://i.dummyjson.com/data/products/85/2.jpg",
+            "https://i.dummyjson.com/data/products/85/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 2
+        }
+      ],
+      "totalAmount": 44,
+      "totalItems": 1,
+      "users": {
+        "email": "demo@demo.com",
+        "password": "Demo@123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Martin Oddegarrd",
+            "email": "asdfas@iwhdskfh.com",
+            "phone": "89879808945",
+            "streetName": "hdwshfkshfks",
+            "city": "sdfsdf",
+            "state": "asdfsdf",
+            "pinCode": "546326"
+          },
+          {
+            "name": "BUkayo",
+            "email": "asdfas@iwhdskfh.com",
+            "phone": "89879808945",
+            "streetName": "hdwshfkshfks",
+            "city": "sdfsdf",
+            "state": "asdfsdf",
+            "pinCode": "546326"
+          },
+          {
+            "name": "ZUbamendi",
+            "email": "asjhdfk@sldkja.com",
+            "phone": "99089808",
+            "streetName": "asmd",
+            "city": "sdfas",
+            "state": "sakd",
+            "pinCode": "878879"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "ZUbamendi",
+        "email": "asjhdfk@sldkja.com",
+        "phone": "99089808",
+        "streetName": "asmd",
+        "city": "sdfas",
+        "state": "sakd",
+        "pinCode": "878879"
+      },
+      "status": "pending",
+      "id": 11
     }
   ]
 }

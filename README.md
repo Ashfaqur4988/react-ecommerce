@@ -288,4 +288,12 @@ a tailwind template is taken from the tailwind components website
 edited the template
 make a new api to fetch all the orders from the backend in orderApi file
 new async thunk for the corresponding
-in the UI putting it inside a mapping func to layOut the structure
+in the UI putting it inside a mapping func to layOut the structure (all the details required has been fetched and mapped)
+made two selectors, one for the totalAmount and the other for all fetched orders, using both we show it in the page
+handleShow -> to show the order
+handleEdit -> edit some part of order for Admin
+make state variable for handleEdit to store the particular order id so that we can use it in conditional rendering of the dropdown menu
+make a new adminUpdateOrder API and slice, use the find Index logic and replace the index found with the payload
+using switch case we gave colors to the statuses
+pagination in admin orders page
+make a new folder common where we can put all the required components which can be commonly used

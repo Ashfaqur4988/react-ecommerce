@@ -28,3 +28,17 @@ export function fetchAllOrders(pagination) {
     resolve({ data: { orders: data, totalOrders: totalOrders } });
   });
 }
+
+//update order form the admin side
+export function adminUpdateOrder(order) {
+  return new Promise(async (resolve) => {
+    const response = await fetch("http://localhost:8080/orders/" + order.id, {
+      //had to remove s from the https for not working of the code
+      method: "PATCH",
+      body: JSON.stringify(order),
+      headers: { "content-type": "application/json" },
+    });
+    const data = await response.json();
+    resolve({ data });
+  });
+}
