@@ -13,13 +13,18 @@ export function createOrder(orderData) {
 }
 
 // A mock function to mimic making an async request to fetch all data of
-export function fetchAllOrders(pagination) {
+export function fetchAllOrders({ pagination, sort }) {
   //pagination = {_page:1, _limit:10} //_page=1&_limit=10
   let queryString = ""; //making an empty string
 
   for (let key in pagination) {
     queryString = queryString + `${key}=${pagination[key]}&`;
   }
+
+  for (let key in sort) {
+    queryString = queryString + `${key}=${sort[key]}&`;
+  }
+
   return new Promise(async (resolve) => {
     // TODO: we will not hard code server URL here
     const response = await fetch("http://localhost:8080/orders?" + queryString);

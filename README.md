@@ -297,3 +297,10 @@ make a new adminUpdateOrder API and slice, use the find Index logic and replace 
 using switch case we gave colors to the statuses
 pagination in admin orders page
 make a new folder common where we can put all the required components which can be commonly used
+from here we can import the pagination component
+SORTING -> used the old logic of sorting that we used in our product list, applied in the admin product list
+
+PRODUCTLIST.JS -> added the stock logic, if product out of stock then show OUT OF STOCK
+productDetail.js -> validation to check if an item already exists or not
+logic used as a productId added in the payload (for cart state) which will be equal to the id of the product
+using this we can compare both and restrict double entry of same product in the cart

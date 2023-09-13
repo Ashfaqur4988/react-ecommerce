@@ -7,12 +7,18 @@ import {
   selectAllOrders,
   selectTotalOrders,
 } from "../../order/orderSlice";
-import { PencilIcon, EyeIcon } from "@heroicons/react/24/outline";
+import {
+  PencilIcon,
+  EyeIcon,
+  ArrowUpIcon,
+  ArrowDownIcon,
+} from "@heroicons/react/24/outline";
 import Pagination from "../../common/Pagination";
 
 const AdminOrders = () => {
   const [page, setPage] = useState(1);
   const [editableOrderId, setEditableOrderId] = useState(-1);
+  const [sort, setSort] = useState({});
 
   const dispatch = useDispatch();
   const allOrders = useSelector(selectAllOrders);
@@ -34,34 +40,34 @@ const AdminOrders = () => {
     setEditableOrderId(-1);
   };
 
+  const handleSort = (sortOption) => {
+    const sort = { _sort: sortOption.sort, _order: sortOption.order };
+    console.log(sort);
+    setSort(sort);
+  };
+
   const handlePage = (page) => {
     setPage(page);
-    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchAllOrdersAsync(pagination));
   };
 
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchAllOrdersAsync(pagination));
-  }, [dispatch, page]);
+    dispatch(fetchAllOrdersAsync({ pagination, sort }));
+  }, [dispatch, page, sort]);
 
   const chooseColor = (status) => {
     switch (status) {
       case "pending":
         return "bg-purple-200 text-black-600";
-        break;
 
       case "dispatch":
         return "bg-yellow-200 text-black-600";
-        break;
 
       case "delivered":
         return "bg-green-200 text-black-600";
-        break;
 
       case "cancelled":
         return "bg-red-200 text-black-600";
-        break;
 
       default:
         break;
@@ -77,9 +83,39 @@ const AdminOrders = () => {
               <table className="min-w-max w-full table-auto">
                 <thead>
                   <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                    <th className="py-3 px-6 text-left">Order Number</th>
+                    <th
+                      className="py-3 px-6 text-left cursor-pointer"
+                      onClick={(e) =>
+                        handleSort({
+                          sort: "id",
+                          order: sort?._order === "asc" ? "desc" : "asc",
+                        })
+                      }
+                    >
+                      Order Number{" "}
+                      {sort._sort === "id" && sort._order === "asc" ? (
+                        <ArrowUpIcon className="w-4 h-4 inline"></ArrowUpIcon>
+                      ) : (
+                        <ArrowDownIcon className="w-4 h-4 inline"></ArrowDownIcon>
+                      )}
+                    </th>
                     <th className="py-3 px-6 text-left">Items</th>
-                    <th className="py-3 px-6 text-center">Total Amount</th>
+                    <th
+                      className="py-3 px-6 text-center cursor-pointer"
+                      onClick={(e) =>
+                        handleSort({
+                          sort: "totalAmount",
+                          order: sort?._order === "asc" ? "desc" : "asc",
+                        })
+                      }
+                    >
+                      Total Amount
+                      {sort._sort === "totalAmount" && sort._order === "asc" ? (
+                        <ArrowUpIcon className="w-4 h-4 inline"></ArrowUpIcon>
+                      ) : (
+                        <ArrowDownIcon className="w-4 h-4 inline"></ArrowDownIcon>
+                      )}
+                    </th>
                     <th className="py-3 px-6 text-center">Delivery Address</th>
                     <th className="py-3 px-6 text-center">Status</th>
                     <th className="py-3 px-6 text-center">Actions</th>
@@ -148,13 +184,13 @@ const AdminOrders = () => {
                         <div className="flex item-center justify-center">
                           <div className="w-7 mr-2 transform hover:text-purple-500 hover:scale-110">
                             <EyeIcon
-                              className="w-6 h-6"
+                              className="w-6 h-6 cursor-pointer"
                               onClick={(e) => handleShow(order)}
                             ></EyeIcon>
                           </div>
                           <div className="w-7 mr-2 transform hover:text-purple-500 hover:scale-110">
                             <PencilIcon
-                              className="w-6 h-6"
+                              className="w-6 h-6 cursor-pointer"
                               onClick={(e) => handleEdit(order)}
                             ></PencilIcon>
                           </div>
@@ -171,7 +207,7 @@ const AdminOrders = () => {
           handlePage={handlePage}
           page={page}
           setPage={setPage}
-          totalOrders={totalOrders}
+          totalItems={totalOrders}
         ></Pagination>
       </div>
     </div>
