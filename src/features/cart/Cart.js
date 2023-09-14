@@ -4,11 +4,15 @@ import {
   updateCartAsync,
   selectItems,
   deleteItemFromCartAsync,
+  selectStatusCart,
 } from "./cartSlice";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, Navigate } from "react-router-dom";
 import { discountedPrice } from "../../app/constants";
+
+import { CirclesWithBar } from "react-loader-spinner";
+import Modals from "../common/Modals";
 
 export function Cart() {
   const items = useSelector(selectItems);
@@ -20,6 +24,8 @@ export function Cart() {
 
   const dispatch = useDispatch();
   const [open, setOpen] = useState(true);
+
+  const [openModal, setOpenModal] = useState(null);
 
   const handleQuantity = (e, item) => {
     dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
@@ -83,8 +89,19 @@ export function Cart() {
                       </div>
 
                       <div className="flex">
+                        <Modals
+                          title={`${item.title}`}
+                          message={`Are you sure you want to delete ${item.title}?`}
+                          dangerOption="Delete"
+                          cancelOption="Cancel"
+                          dangerAction={(e) => handleDelete(e, item)}
+                          cancelAction={() => setOpenModal(null)}
+                          showModal={openModal === item.id}
+                        ></Modals>
                         <button
-                          onClick={(e) => handleDelete(e, item)}
+                          onClick={(e) => {
+                            setOpenModal(item.id);
+                          }}
                           type="button"
                           className="font-medium text-indigo-600 hover:text-indigo-500"
                         >

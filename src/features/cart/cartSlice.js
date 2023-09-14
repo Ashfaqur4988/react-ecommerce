@@ -130,4 +130,6 @@ export const { increment } = cartSlice.actions;
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectItems = (state) => state.cart.items;
 
+export const selectStatusCart = (state) => state.cart.status;
+
 export default cartSlice.reducer;

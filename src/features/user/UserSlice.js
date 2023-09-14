@@ -88,4 +88,6 @@ export const selectUserInfo = (state) => state.user.userInfo;
 //user orders
 export const selectUserOrders = (state) => state.user.userOrders;
 
+export const selectUserOrdersStatus = (state) => state.user.status;
+
 export default userSlice.reducer;

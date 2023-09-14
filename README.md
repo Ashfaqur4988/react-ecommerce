@@ -304,3 +304,23 @@ PRODUCTLIST.JS -> added the stock logic, if product out of stock then show OUT O
 productDetail.js -> validation to check if an item already exists or not
 logic used as a productId added in the payload (for cart state) which will be equal to the id of the product
 using this we can compare both and restrict double entry of same product in the cart
+
+FINAL FRONTEND PART:
+react alerts package has been installed (use --force to coerce installation)
+from the npm docs imported all the necessary dependencies and wrapped the router provider by the provider in alerts
+Footer -> footer component made in the common folder and in all the required pages it is imported and placed at the bottom
+Loader -> react-spinner library is used to get the UI for loader, npm install react-loader-spinner --save --force
+copy the loader component code
+where to implement this? ans: the status of redux when it is LOADING (before fulfilled)
+placed loaders every part wherever is required
+
+Modals use for delete operations:
+take modal components and we need to pass message as props where we shall provide all the information than needs to be rendered in the page
+NOTE: the goal is to control the entries in modal from outside
+need to send a func as prop which shall trigger the openModal state (to show the modal), handleDelete func has been sent as a prop that will execute handleDanger inside modal
+but the id is required to get the exact item, therefore we put the modal component inside the map func in the cart file
+so we made a state variable in the cart file and sent it in the props to the modal file, where we called an useEffect hook to set the setOpen to true if showModal has any value, else false, dependency is showModal prop
+TODO: IMPORTANT LOGIC (sending func as props)
+sending the value of openModal in cart file as the item.id because if it is just given true or false then all the modals would have opened up
+LEARN THIS LOGIC, VERY IMPORTANT
+use this reusable component in the admin edit product delete button

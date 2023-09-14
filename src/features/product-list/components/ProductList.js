@@ -1,5 +1,6 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { CirclesWithBar } from "react-loader-spinner";
 import {
   selectTotalItems,
   fetchAllProductAsync,
@@ -9,6 +10,7 @@ import {
   selectCategory,
   fetchBrandsAsync,
   fetchCategoriesAsync,
+  selectStatus,
 } from "../productSlice";
 import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
 
@@ -71,6 +73,7 @@ export function ProductList() {
   const totalItems = useSelector(selectTotalItems); //total items data
   const brands = useSelector(selectBrands); //list of brands
   const categories = useSelector(selectCategory); //list of categories
+  const status = useSelector(selectStatus); //status of product
 
   //list of filters
   const filters = [
@@ -250,7 +253,10 @@ export function ProductList() {
                   {/* Product grid */}
                   <div className="lg:col-span-3">
                     {/* displaying product list */}
-                    <ProductGrid products={products}></ProductGrid>
+                    <ProductGrid
+                      products={products}
+                      status={status}
+                    ></ProductGrid>
                   </div>
                 </div>
               </section>
@@ -452,11 +458,26 @@ function DesktopFilter({ handleFilter, filters }) {
   );
 }
 
-function ProductGrid({ products }) {
+function ProductGrid({ products, status }) {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+          {/* Loader will show only when the status is "pending" */}
+          {status === "loading" ? (
+            <CirclesWithBar
+              height="100"
+              width="100"
+              color="rgb(79,70,229)"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              outerCircleColor=""
+              innerCircleColor=""
+              barColor=""
+              ariaLabel="circles-with-bar-loading"
+            />
+          ) : null}
           {products.map((product) => (
             <Link to={`/product-detail/${product.id}`} key={product.id}>
               {" "}
@@ -493,11 +514,7 @@ function ProductGrid({ products }) {
                       ${product.price}
                     </p>
                   </div>
-                  {product.deleted && (
-                    <div>
-                      <p className="text-sm text-red-400">Product Deleted</p>
-                    </div>
-                  )}
+
                   {product.stock <= 0 && (
                     <div>
                       <p className="text-sm text-red-200">

@@ -4,14 +4,17 @@ import {
   fetchLoggedInUserOrdersAsync,
   selectUserInfo,
   selectUserOrders,
+  selectUserOrdersStatus,
 } from "../UserSlice";
 import { Link } from "react-router-dom";
 import { discountedPrice } from "../../../app/constants";
+import { CirclesWithBar } from "react-loader-spinner";
 
 const UserOrders = () => {
   const user = useSelector(selectUserInfo);
   const dispatch = useDispatch();
   const userOrders = useSelector(selectUserOrders);
+  const status = useSelector(selectUserOrdersStatus);
 
   const [open, setOpen] = useState(true);
 
@@ -24,6 +27,21 @@ const UserOrders = () => {
       {userOrders.map((userOrder, index) => (
         <div>
           <div className="mx-auto max-w-7xl mt-12 bg-white px-4 sm:px-6 lg:px-8">
+            {/* Loader will show only when the status is "pending" */}
+            {status === "loading" ? (
+              <CirclesWithBar
+                height="100"
+                width="100"
+                color="rgb(79,70,229)"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                outerCircleColor=""
+                innerCircleColor=""
+                barColor=""
+                ariaLabel="circles-with-bar-loading"
+              />
+            ) : null}
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 py-3">
               Orders Number is: {userOrder.id}
             </h2>

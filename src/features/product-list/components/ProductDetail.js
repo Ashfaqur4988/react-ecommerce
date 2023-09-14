@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllProductAsync,
   fetchProductByIdAsync,
+  selectStatus,
   selectedProduct,
   selectedProductId,
 } from "../productSlice";
@@ -12,6 +13,11 @@ import { useParams } from "react-router-dom";
 import { selectLoggedInUser } from "../../auth/authSlice";
 import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { discountedPrice } from "../../../app/constants";
+
+import { CirclesWithBar } from "react-loader-spinner";
+
+//react alert code
+import { useAlert } from "react-alert";
 
 //TODO: in server data will add color, sizes, highlights
 
@@ -43,6 +49,7 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const alert = useAlert(); //react alert code
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const user = useSelector(selectLoggedInUser);
@@ -50,6 +57,7 @@ export default function Example() {
   const product = useSelector(selectedProductId);
   const params = useParams(); //from react router to get the ID from the route end point
   const cartItems = useSelector(selectItems);
+  const status = useSelector(selectStatus);
 
   const handleCart = (e) => {
     //send the items to cart
@@ -63,8 +71,10 @@ export default function Example() {
       };
       delete newItem["id"];
       dispatch(addToCartAsync(newItem));
+      //TODO: it will be based on the server response of backend
+      alert.success("Item added in cart");
     } else {
-      console.log("item already exists");
+      alert.show("Item already added in cart");
     }
   };
 
@@ -77,6 +87,22 @@ export default function Example() {
       {product && (
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
+            {/* Loader will show only when the status is "pending" */}
+            {status === "loading" ? (
+              <CirclesWithBar
+                height="100"
+                width="100"
+                color="rgb(79,70,229)"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                outerCircleColor=""
+                innerCircleColor=""
+                barColor=""
+                ariaLabel="circles-with-bar-loading"
+              />
+            ) : null}
+
             <ol
               role="list"
               className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"

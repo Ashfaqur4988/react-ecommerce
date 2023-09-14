@@ -158,6 +158,7 @@ export const productSlice = createSlice({
           (product) => product.id === action.payload.id
         );
         state.products[index] = action.payload;
+        state.selectedProduct = action.payload;
       });
   },
 });
@@ -174,5 +175,7 @@ export const selectTotalItems = (state) => state.product.totalItems; //send the 
 export const selectBrands = (state) => state.product.brands; //send the brands data
 export const selectCategory = (state) => state.product.categories; //send the category data
 export const selectedProductId = (state) => state.product.selectedProduct; //send the product ID data
+
+export const selectStatus = (state) => state.product.status; //selector for the product status
 
 export default productSlice.reducer;
