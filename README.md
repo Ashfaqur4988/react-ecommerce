@@ -324,3 +324,5 @@ TODO: IMPORTANT LOGIC (sending func as props)
 sending the value of openModal in cart file as the item.id because if it is just given true or false then all the modals would have opened up
 LEARN THIS LOGIC, VERY IMPORTANT
 use this reusable component in the admin edit product delete button
+
+made small changes in the admin section to show delete switch only when product does not have any deleted flag
