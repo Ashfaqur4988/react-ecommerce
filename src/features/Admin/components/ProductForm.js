@@ -13,6 +13,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modals from "../../common/Modals";
+import { useAlert } from "react-alert";
 
 const ProductForm = () => {
   const {
@@ -99,11 +100,13 @@ const ProductForm = () => {
             product.id = params.id; //assigning the id which is required to be changed
             product.rating = product.rating || 0;
             dispatch(updateProductAsync(product));
+            alert.success("Product Updated Successfully");
             reset();
           } else {
             dispatch(addProductAsync(product));
+            alert.success("Product Created Successfully");
+            //TODO: check whether api success or failed
             reset();
-            //TODO: after successfully adding product, show message
           }
         })}
       >
@@ -114,9 +117,9 @@ const ProductForm = () => {
             </h2>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              {selectedProduct.deleted ? (
+              {selectedProduct && selectedProduct.deleted && (
                 <p className="text-red-500">Items has been deleted</p>
-              ) : null}
+              )}
               <div className="sm:col-span-full">
                 <label
                   htmlFor="title"
@@ -243,8 +246,12 @@ const ProductForm = () => {
                     })}
                   >
                     <option value="">--Choose Brand--</option>
-                    {brands.map((brand) => {
-                      return <option value={brand.value}>{brand.label}</option>;
+                    {brands.map((brand, index) => {
+                      return (
+                        <option key={index} value={brand.value}>
+                          {brand.label}
+                        </option>
+                      );
                     })}
                   </select>
                 </div>
@@ -265,9 +272,9 @@ const ProductForm = () => {
                       })}
                     >
                       <option value="">--Choose Category--</option>
-                      {categories.map((category) => {
+                      {categories.map((category, index) => {
                         return (
-                          <option value={category.value}>
+                          <option key={index} value={category.value}>
                             {category.label}
                           </option>
                         );
@@ -498,15 +505,17 @@ const ProductForm = () => {
           </button>
         </div>
       </form>
-      <Modals
-        title={`Delete ${selectedProduct.title}`}
-        message={`Are you sure you want to delete ${selectedProduct.title}`}
-        dangerOption={"Delete"}
-        dangerAction={handleDelete}
-        cancelOption={"Cancel"}
-        cancelAction={() => setOpenModal(null)}
-        showModal={openModal}
-      ></Modals>
+      {selectedProduct && (
+        <Modals
+          title={`Delete ${selectedProduct.title}`}
+          message={`Are you sure you want to delete ${selectedProduct.title}`}
+          dangerOption={"Delete"}
+          dangerAction={handleDelete}
+          cancelOption={"Cancel"}
+          cancelAction={() => setOpenModal(null)}
+          showModal={openModal}
+        ></Modals>
+      )}
     </>
   );
 };

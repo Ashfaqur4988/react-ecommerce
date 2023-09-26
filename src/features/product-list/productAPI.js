@@ -9,7 +9,7 @@ export function fetchAllProduct() {
 }
 
 //fetch filter data and sort API
-export function fetchProductByFilters(filter, sort, pagination) {
+export function fetchProductByFilters(filter, sort, pagination, admin) {
   //filter object = {category: ["smartphone","laptop]"}
   //sort object = {_sort: "price", _order:"desc"}
   //pagination = {_page:1, _limit:10} //_page=1&_limit=10
@@ -32,6 +32,10 @@ export function fetchProductByFilters(filter, sort, pagination) {
 
   for (let key in pagination) {
     queryString = queryString + `${key}=${pagination[key]}&`;
+  }
+
+  if (admin) {
+    queryString = queryString + `admin=true`;
   }
   return new Promise(async (resolve) => {
     // TODO: we will not hard code server URL here

@@ -52,7 +52,7 @@ const AdminOrders = () => {
 
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchAllOrdersAsync({ pagination, sort }));
+    dispatch(fetchAllOrdersAsync({ pagination, sort, admin: true }));
   }, [dispatch, page, sort]);
 
   const chooseColor = (status) => {
@@ -123,25 +123,28 @@ const AdminOrders = () => {
                 </thead>
                 <tbody className="text-gray-600 text-sm font-light">
                   {allOrders.map((order) => (
-                    <tr className="border-b border-gray-200 hover:bg-gray-100">
+                    <tr
+                      key={order.id}
+                      className="border-b border-gray-200 hover:bg-gray-100"
+                    >
                       <td className="py-3 px-6 text-left whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="mr-2"></div>
                           <span className="font-medium">{order.id}</span>
                         </div>
                       </td>
-                      {order.items.map((item) => (
-                        <td className="py-3 px-6 text-left">
+                      {order.items.map((item, index) => (
+                        <td key={index} className="py-3 px-6 text-left">
                           <div className="flex items-center">
                             <div className="mr-2">
                               <img
                                 className="w-10 h-10 rounded-full"
-                                src={item.thumbnail}
+                                src={item.product.thumbnail}
                                 alt="thumbnail"
                               />
                             </div>
                             <span>
-                              {item.title} - #{item.quantity}
+                              {item.product.title} - #{item.quantity}
                             </span>
                           </div>
                         </td>

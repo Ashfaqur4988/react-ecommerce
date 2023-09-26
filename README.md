@@ -344,3 +344,5 @@ selectUserInfo is used to fetch id, email, role and addresses of the user
 changed user to userInfo in places
 in UserSlice changed the updateUserAsync state variable to userInfo to save the new data of user
 added short circuit for userOrders page as it was not getting getting loaded and the map func ran before loading
+
+from adminProductList, productList, api, slice we have sent admin = true in query string to put a conditional in the backend

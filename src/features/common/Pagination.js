@@ -51,6 +51,7 @@ export default function Pagination({ handlePage, page, setPage, totalItems }) {
             {/* math formula to create an array of total length and loop through to get the data*/}
             {Array.from({ length: totalPage }).map((el, index) => (
               <div
+                key={index}
                 onClick={() => handlePage(index + 1)}
                 href="#"
                 aria-current="page"
