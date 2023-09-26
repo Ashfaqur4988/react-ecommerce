@@ -18,8 +18,6 @@ const UserOrders = () => {
 
   const [open, setOpen] = useState(true);
 
-  console.log(userInfo);
-
   useEffect(() => {
     dispatch(fetchLoggedInUserOrdersAsync(userInfo.id));
   }, [userInfo.id, dispatch]);
