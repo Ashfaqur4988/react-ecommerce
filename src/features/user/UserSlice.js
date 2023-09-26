@@ -6,10 +6,9 @@ import {
 } from "./UserAPI";
 
 const initialState = {
-  userInfo: null, // this info will be used in case of detailed user info, where auth will only be used for
-  //loggedInUser id etc checks
+  userInfo: null, // only contain identity 'id' , 'email'
   status: "idle",
-  userOrders: [],
+  // userOrders: [],
 };
 
 //async thunk for async calls for the user info
@@ -60,7 +59,7 @@ export const userSlice = createSlice({
       })
       .addCase(fetchLoggedInUserOrdersAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.userOrders = action.payload; // user orders info (we did not use push because we shall be pushing data just for one time)
+        state.userInfo.orders = action.payload; // user orders info (we did not use push because we shall be pushing data just for one time)
       })
       .addCase(fetchLoggedInUsersAsync.pending, (state) => {
         state.status = "loading";
@@ -75,7 +74,7 @@ export const userSlice = createSlice({
       })
       .addCase(updateUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.userOrders = action.payload; //
+        state.userInfo = action.payload; //earlier there was loggedInUser variable in other slices
       });
   },
 });
@@ -86,7 +85,7 @@ export const { increment } = userSlice.actions;
 export const selectUserInfo = (state) => state.user.userInfo;
 
 //user orders
-export const selectUserOrders = (state) => state.user.userOrders;
+export const selectUserOrders = (state) => state.user.userInfo.orders;
 
 export const selectUserOrdersStatus = (state) => state.user.status;
 

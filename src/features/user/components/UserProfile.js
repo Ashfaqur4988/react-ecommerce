@@ -4,7 +4,7 @@ import { selectUserInfo, updateUserAsync } from "../UserSlice";
 import { useForm } from "react-hook-form";
 
 export function UserProfile() {
-  const user = useSelector(selectUserInfo);
+  const userInfo = useSelector(selectUserInfo);
   const dispatch = useDispatch();
   const [selectedEditIndex, setSelectedEditIndex] = useState(-1); //initial -1, later we shall add the index of which
   //address needs to be edited
@@ -22,7 +22,7 @@ export function UserProfile() {
   } = useForm();
 
   const handleEdit = (address, index) => {
-    const newUser = { ...user, addresses: [...user.addresses] }; //for shallow copy issue, which means coping a user
+    const newUser = { ...userInfo, addresses: [...userInfo.addresses] }; //for shallow copy issue, which means coping a user
     //detail which is being fetched and going into deep for the addresses part as it is nested inside
     newUser.addresses.splice(index, 1, address); //using the index to locate the address and remove it and
     //place the new data there
@@ -31,7 +31,7 @@ export function UserProfile() {
   };
 
   const handleRemove = (e, index) => {
-    const newUser = { ...user, addresses: [...user.addresses] }; //for shallow copy issue, which means coping a user
+    const newUser = { ...userInfo, addresses: [...userInfo.addresses] }; //for shallow copy issue, which means coping a user
     //detail which is being fetched and going into deep for the addresses part as it is nested inside
     newUser.addresses.splice(index, 1); //using the index to locate the address and remove it
     dispatch(updateUserAsync(newUser));
@@ -42,7 +42,7 @@ export function UserProfile() {
     setShowAddressForm(false);
     console.log(index);
 
-    const address = user.addresses[index];
+    const address = userInfo.addresses[index];
     setValue("name", address.name);
     setValue("email", address.email);
     setValue("phone", address.phone);
@@ -53,7 +53,10 @@ export function UserProfile() {
   };
 
   const handleAdd = (address) => {
-    const newUser = { ...user, addresses: [...user.addresses, address] };
+    const newUser = {
+      ...userInfo,
+      addresses: [...userInfo.addresses, address],
+    };
     dispatch(updateUserAsync(newUser));
     setShowAddressForm(false);
   };
@@ -62,14 +65,14 @@ export function UserProfile() {
     <div>
       <div className="mx-auto max-w-7xl mt-12 bg-white px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold tracking-tight text-gray-900 py-3">
-          Name: {user.name ? user.name : "New User"}
+          Name: {userInfo.name ? userInfo.name : "New User"}
         </h2>
         <h3 className="text-xl font-bold tracking-tight text-red-900 py-3">
-          Email: {user.email ? user.email : "abc@abc.com"}
+          Email: {userInfo.email ? userInfo.email : "abc@abc.com"}
         </h3>
-        {user.role === "admin" && (
+        {userInfo.role === "admin" && (
           <h3 className="text-xl font-bold tracking-tight text-red-900 py-3">
-            Role: {user.role ? user.role : "abc"}
+            Role: {userInfo.role ? userInfo.role : "abc"}
           </h3>
         )}
 
@@ -257,7 +260,7 @@ export function UserProfile() {
 
           <p className="mt-0.5 text-sm text-gray-500">Your Address:</p>
 
-          {user.addresses.map((address, index) => (
+          {userInfo.addresses.map((address, index) => (
             <div>
               {selectedEditIndex === index ? (
                 <form

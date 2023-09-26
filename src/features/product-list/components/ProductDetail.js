@@ -64,12 +64,10 @@ export default function Example() {
     e.preventDefault();
     if (cartItems.findIndex((item) => item.productId === product.id) < 0) {
       const newItem = {
-        ...product,
-        productId: product.id,
+        product: product.id,
         quantity: 1,
         user: user.id,
       };
-      delete newItem["id"];
       dispatch(addToCartAsync(newItem));
       //TODO: it will be based on the server response of backend
       alert.success("Item added in cart");

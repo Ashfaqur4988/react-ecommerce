@@ -326,3 +326,21 @@ LEARN THIS LOGIC, VERY IMPORTANT
 use this reusable component in the admin edit product delete button
 
 made small changes in the admin section to show delete switch only when product does not have any deleted flag
+
+changes along with backend code:
+
+1. createUser path endpoint to auth/signup from users
+2. checkUser, endpoint auth/login, changed to post method, put the logic inside try catch, logic -> sending the email & pwd, in backend the check is done and returns the result, if response.ok then only resolve else reject (catch error and send back)
+   when rejected then we have a method in async thunk to set rejected state
+   wrap around a try catch block and put the rejectWithValue function (put error in it) in the catch section and pass it as an destructured argument
+   the error message shall be sent by the payload, store in the state variable error, inside error there will be error:{message: '.....'}, therefore we need to go one step deeper to fetch the message
+3. addToCart, need to change as we have passed reference id in the db, items state was used to store the items in cart so we need to search and modify in the file, need to change every part where item is mapped as the product is now inside one level deep in our db
+4. deleteItemFromCart, added in danger action props the item id
+5. updateCart, added item id in the function, still not working
+6. fetchLoggedInUserOrders, changed the endpoint to ?user=userId, also in checkOutPage need to send user: users.id
+7.
+
+selectUserInfo is used to fetch id, email, role and addresses of the user
+changed user to userInfo in places
+in UserSlice changed the updateUserAsync state variable to userInfo to save the new data of user
+added short circuit for userOrders page as it was not getting getting loaded and the map func ran before loading

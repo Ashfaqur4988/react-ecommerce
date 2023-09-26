@@ -27,6 +27,7 @@ function classNames(...classes) {
 
 export const Navbar = ({ children }) => {
   const items = useSelector(selectItems);
+  //this user detail should come from userInfo
   const user = useSelector(selectLoggedInUser);
   return (
     <>

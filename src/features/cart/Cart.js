@@ -17,7 +17,7 @@ import Modals from "../common/Modals";
 export function Cart() {
   const items = useSelector(selectItems);
   const totalAmount = items.reduce(
-    (amount, item) => discountedPrice(item) * item.quantity + amount,
+    (amount, item) => discountedPrice(item.product) * item.quantity + amount,
     0
   );
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
@@ -28,7 +28,8 @@ export function Cart() {
   const [openModal, setOpenModal] = useState(null);
 
   const handleQuantity = (e, item) => {
-    dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
+    console.log(item);
+    dispatch(updateCartAsync({ id: item.id, quantity: +e.target.value }));
   };
 
   const handleDelete = (e, id) => {
@@ -52,8 +53,8 @@ export function Cart() {
                 <li key={item.id} className="flex py-6">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img
-                      src={item.thumbnail}
-                      alt={item.title}
+                      src={item.product.thumbnail}
+                      alt={item.product.title}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>
@@ -62,11 +63,15 @@ export function Cart() {
                     <div>
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <h3>
-                          <a href={item.href}>{item.title}</a>
+                          <a href={item.product.id}>{item.product.title}</a>
                         </h3>
-                        <p className="ml-4">$ {discountedPrice(item)}</p>
+                        <p className="ml-4">
+                          $ {discountedPrice(item.product)}
+                        </p>
                       </div>
-                      <p className="mt-1 text-sm text-gray-500">{item.brand}</p>
+                      <p className="mt-1 text-sm text-gray-500">
+                        {item.product.brand}
+                      </p>
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
                       <div className="text-gray-500">
@@ -90,11 +95,11 @@ export function Cart() {
 
                       <div className="flex">
                         <Modals
-                          title={`${item.title}`}
-                          message={`Are you sure you want to delete ${item.title}?`}
+                          title={`${item.product.title}`}
+                          message={`Are you sure you want to delete ${item.product.title}?`}
                           dangerOption="Delete"
                           cancelOption="Cancel"
-                          dangerAction={(e) => handleDelete(e, item)}
+                          dangerAction={(e) => handleDelete(e, item.id)}
                           cancelAction={() => setOpenModal(null)}
                           showModal={openModal === item.id}
                         ></Modals>
