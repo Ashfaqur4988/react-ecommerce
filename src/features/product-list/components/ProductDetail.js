@@ -52,7 +52,6 @@ export default function Example() {
   const alert = useAlert(); //react alert code
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
-  const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   const product = useSelector(selectedProductId);
   const params = useParams(); //from react router to get the ID from the route end point
@@ -66,7 +65,6 @@ export default function Example() {
       const newItem = {
         product: product.id,
         quantity: 1,
-        user: user.id,
       };
       dispatch(addToCartAsync(newItem));
       //TODO: it will be based on the server response of backend

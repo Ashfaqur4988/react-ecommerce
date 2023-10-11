@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createUser, checkUser, signOut } from "./authAPI";
+import { createUser, login, signOut } from "./authAPI";
 import { updateUser } from "../user/UserAPI";
 
 const initialState = {
-  loggedInUser: null,
+  loggedInUserToken: null,
   status: "idle",
   error: null,
 };
@@ -19,11 +19,11 @@ export const createUserAsync = createAsyncThunk(
 );
 
 //async thunk for the checking of password
-export const checkUserAsync = createAsyncThunk(
-  "user/checkUser",
+export const loginAsync = createAsyncThunk(
+  "user/login",
   async (loginInfo, { rejectWithValue }) => {
     try {
-      const response = await checkUser(loginInfo);
+      const response = await login(loginInfo);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -72,16 +72,16 @@ export const authSlice = createSlice({
       })
       .addCase(createUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.loggedInUser = action.payload;
+        state.loggedInUserToken = action.payload;
       })
-      .addCase(checkUserAsync.pending, (state) => {
+      .addCase(loginAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(checkUserAsync.fulfilled, (state, action) => {
+      .addCase(loginAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.loggedInUser = action.payload;
+        state.loggedInUserToken = action.payload;
       })
-      .addCase(checkUserAsync.rejected, (state, action) => {
+      .addCase(loginAsync.rejected, (state, action) => {
         state.status = "idle";
         state.error = action.payload;
       })
@@ -90,20 +90,20 @@ export const authSlice = createSlice({
       // })
       // .addCase(updateUserAsync.fulfilled, (state, action) => {
       //   state.status = "idle";
-      //   state.loggedInUser = action.payload;
+      //   state.loggedInUserToken = action.payload;
       // })
       .addCase(signOutUserAsync.pending, (state) => {
         state.status = "loading";
       })
       .addCase(signOutUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.loggedInUser = null;
+        state.loggedInUserToken = null;
       });
   },
 });
 
 export const { increment } = authSlice.actions;
-export const selectLoggedInUser = (state) => state.auth.loggedInUser; //select logged in users
+export const selectLoggedInUser = (state) => state.auth.loggedInUserToken; //select logged in users
 export const selectError = (state) => state.auth.error; //select errors
 
 // The function below is called a selector and allows us to select a value from

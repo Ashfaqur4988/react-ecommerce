@@ -330,7 +330,7 @@ made small changes in the admin section to show delete switch only when product 
 changes along with backend code:
 
 1. createUser path endpoint to auth/signup from users
-2. checkUser, endpoint auth/login, changed to post method, put the logic inside try catch, logic -> sending the email & pwd, in backend the check is done and returns the result, if response.ok then only resolve else reject (catch error and send back)
+2. login, endpoint auth/login, changed to post method, put the logic inside try catch, logic -> sending the email & pwd, in backend the check is done and returns the result, if response.ok then only resolve else reject (catch error and send back)
    when rejected then we have a method in async thunk to set rejected state
    wrap around a try catch block and put the rejectWithValue function (put error in it) in the catch section and pass it as an destructured argument
    the error message shall be sent by the payload, store in the state variable error, inside error there will be error:{message: '.....'}, therefore we need to go one step deeper to fetch the message
@@ -346,3 +346,20 @@ in UserSlice changed the updateUserAsync state variable to userInfo to save the 
 added short circuit for userOrders page as it was not getting getting loaded and the map func ran before loading
 
 from adminProductList, productList, api, slice we have sent admin = true in query string to put a conditional in the backend
+
+BACKEND compatibility, we are using tokens, so we need to make the particular changes:
+changing the loggedInUser state variable in authSlice to loggedInUserToken
+checking all the uses of loggedInUser in the files and modifying it accordingly
+removing all the use of user.id:
+
+BASICALLY WE ARE REMOVING ANY INSTANCE OF THE USER.ID FROM THE FRONTEND AND USING THE USER INFO FROM THE TOKEN IN BACKEND
+
+1. fetchItemsByUserIdAsync (cartSlice, cartAPI) [same changes in the backend]
+2. fetchLoggedInUsersAsync (userSlice, userAPI) [same changes in the backend] also changed the name of the route to /own
+3. addToCartAsync, just remove the user.id part
+4. removed the redundant calls of selectLoggedInUser from AdminProductDetail file
+5. userInfo added in protectedAdmin (because in user, now there will only be token)
+6. ProductDetail file, removing the user: user.id and removed the user constant
+7. OrderSuccess file, removed user.id from resetCartAsync, similarly in all the depending api calls, cartSlice and cartAPI
+
+\*\*ISSUE: regarding the token that we sent to the api through postman but not sending it from the frontend in every request so it is giving unauthorized

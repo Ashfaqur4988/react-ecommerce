@@ -158,8 +158,9 @@ function App() {
   const user = useSelector(selectLoggedInUser);
   useEffect(() => {
     if (user) {
-      dispatch(fetchItemsByUserIdAsync(user.id)); //to fetch the user items at the time of login success
-      dispatch(fetchLoggedInUsersAsync(user.id)); //to fetch the user data at the time of login success
+      //we can get req.user by token on the backend so no need to give in front end, removing the user.id
+      dispatch(fetchItemsByUserIdAsync());
+      dispatch(fetchLoggedInUsersAsync());
     }
   }, [dispatch, user]);
   return (

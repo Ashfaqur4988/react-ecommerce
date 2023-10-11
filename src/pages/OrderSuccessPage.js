@@ -8,14 +8,13 @@ import { selectUserInfo } from "../features/user/UserSlice";
 const OrderSuccessPage = () => {
   const params = useParams(); //we can fetch the id using the useParam hook
   const dispatch = useDispatch();
-  const user = useSelector(selectUserInfo);
 
   useEffect(() => {
     //reset cart
-    dispatch(resetCartAsync(user.id));
+    dispatch(resetCartAsync());
     //reset current order
     dispatch(resetOrder());
-  }, [dispatch, user.id]);
+  }, [dispatch]);
 
   return (
     <>

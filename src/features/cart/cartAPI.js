@@ -13,10 +13,10 @@ export function addToCart(items) {
 }
 
 // fetching cart items by user ids
-export function fetchItemsByUserId(userId) {
+export function fetchItemsByUserId() {
   return new Promise(async (resolve) => {
     // TODO: we will not hard code server URL here
-    const response = await fetch("http://localhost:8080/cart?user=" + userId);
+    const response = await fetch("http://localhost:8080/cart");
     const data = await response.json();
     resolve({ data });
   });
@@ -50,10 +50,10 @@ export function deleteItemFromCart(itemId) {
 }
 
 //deleting from cart of a specific user
-export function resetCart(userId) {
+export function resetCart() {
   return new Promise(async (resolve) => {
     //async thunk accepts only promises
-    const response = await fetchItemsByUserId(userId); //get all the items of user's cart
+    const response = await fetchItemsByUserId(); //get all the items of user's cart
     const items = response.data;
     for (let item of items) {
       await deleteItemFromCart(item.id); //delete items of that user's cart
