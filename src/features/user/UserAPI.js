@@ -8,10 +8,10 @@ export function fetchLoggedInUser() {
 }
 
 // API to get the user's order
-export function fetchLoggedInUserOrders(userId) {
+export function fetchLoggedInUserOrders() {
   return new Promise(async (resolve) => {
     const response = await fetch(
-      "http://localhost:8080/orders/user/" + userId //getting inside the json format to get the user ID
+      "http://localhost:8080/orders/own" //getting inside the json format to get the user ID
     );
     const data = await response.json();
     resolve({ data });

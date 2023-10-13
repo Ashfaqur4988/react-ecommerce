@@ -11,7 +11,6 @@ import { discountedPrice } from "../../../app/constants";
 import { CirclesWithBar } from "react-loader-spinner";
 
 const UserOrders = () => {
-  const userInfo = useSelector(selectUserInfo);
   const dispatch = useDispatch();
   const userOrders = useSelector(selectUserOrders);
   const status = useSelector(selectUserOrdersStatus);
@@ -19,8 +18,8 @@ const UserOrders = () => {
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchLoggedInUserOrdersAsync(userInfo.id));
-  }, [userInfo.id, dispatch]);
+    dispatch(fetchLoggedInUserOrdersAsync());
+  }, [dispatch]);
 
   return (
     <div>

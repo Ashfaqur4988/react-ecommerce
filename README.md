@@ -363,3 +363,7 @@ BASICALLY WE ARE REMOVING ANY INSTANCE OF THE USER.ID FROM THE FRONTEND AND USIN
 7. OrderSuccess file, removed user.id from resetCartAsync, similarly in all the depending api calls, cartSlice and cartAPI
 
 \*\*ISSUE: regarding the token that we sent to the api through postman but not sending it from the frontend in every request so it is giving unauthorized
+the solution is written in the backend readme
+
+in userOrder file:
+fetchLoggedInUserOrdersAsync removed the ID from the slice and api also, as we are taking the id from the jwt token from backend, changed the endpoint to /own/
