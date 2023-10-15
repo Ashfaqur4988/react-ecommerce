@@ -367,3 +367,7 @@ the solution is written in the backend readme
 
 in userOrder file:
 fetchLoggedInUserOrdersAsync removed the ID from the slice and api also, as we are taking the id from the jwt token from backend, changed the endpoint to /own/
+
+if login with an unregistered account we get a different error because we havent handled the error, so we need to change the error message to text not json in auth api
+
+const alert = useAlert() was not declared in the productForm page

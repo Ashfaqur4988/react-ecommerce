@@ -30,6 +30,7 @@ const ProductForm = () => {
   const dispatch = useDispatch();
   const selectedProduct = useSelector(selectedProductId);
   const params = useParams();
+  const alert = useAlert();
 
   //calling again here just to be sure and get all the details of the selected id
   useEffect(() => {
