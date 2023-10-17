@@ -5,6 +5,7 @@ import {
   selectItems,
   deleteItemFromCartAsync,
   selectStatusCart,
+  selectCartLoaded,
 } from "./cartSlice";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -16,6 +17,7 @@ import Modals from "../common/Modals";
 
 export function Cart() {
   const items = useSelector(selectItems);
+  const itemsLoaded = useSelector(selectCartLoaded);
   const totalAmount = items.reduce(
     (amount, item) => discountedPrice(item.product) * item.quantity + amount,
     0
@@ -38,7 +40,9 @@ export function Cart() {
 
   return (
     <>
-      {!items.length && <Navigate to={"/"} replace={true}></Navigate>}
+      {!items.length && itemsLoaded && (
+        <Navigate to={"/"} replace={true}></Navigate>
+      )}
       <div className="mx-auto max-w-7xl mt-12 bg-white px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl font-bold tracking-tight text-gray-900 py-3">
           Cart

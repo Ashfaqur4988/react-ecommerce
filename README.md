@@ -371,3 +371,50 @@ fetchLoggedInUserOrdersAsync removed the ID from the slice and api also, as we a
 if login with an unregistered account we get a different error because we havent handled the error, so we need to change the error message to text not json in auth api
 
 const alert = useAlert() was not declared in the productForm page
+
+in auth: creating a check user, to solve the reloading and going to home page even after authenticating issue, because we are already authenticated
+checkAuth function is created to check whether the logged in person is still authenticated or not after refreshing the page or reloading, this is inside authSlice
+this api with get request will know that there is a jwt token and with this it can confirm the authentication of that user
+after adding the corresponding api in the backend now inside a new useEffect we are dispatching this checkAuth in the app js file
+
+RELOADING
+\*\*ISSUE: after logging in whenever we are reloading the page it is taking us to the home page, which should be avoided
+SOLUTION: till the time user information is loaded donot redirect it anywhere, once the user info is loaded, depending to the info we shall redirect
+we need to put a boolean state variable, which will be set to true after checking, inside auth slice create a new state variable as userChecked
+when fulfilled and rejected userChecked will be true, a selector has been made and wrapped the app component with userChecked short circuit
+
+same issue in cart:
+here items length is the depending variable so before getting the cart length the page is redirecting
+to solve this we need to delay the redirection until the cart length is fetched
+use the same logic as above to achieve the desired result
+
+PAYMENT WITH STRIPE:
+npm install --save @stripe/react-stripe-js @stripe/stripe-js to install stripe
+in checkOut file put 2 short circuits, one for cash and one for card
+if cash then navigate to order success page else to stripe payment page
+following the docs and instructions -> made StripeCheckout, CheckoutForm and Stripe css files and pasted the codes given in the docs
+changed the css inside like putting className infront of the css to make it distinct, changed the js components names in the code taken from docs
+
+UNDERSTAND the checkoutForm component of the stripe
+
+added a new route to StripeCheckout in Appjs
+now test it using testing cards available over the internet, im using the 4242 4242 4242 4242 card no expiry 11/23 and cvc 111 country India
+
+SMALL BACKEND CHANGE OF TOTAL AMOUNT provided
+
+test done successfully
+
+IN BACKEND
+get the payment acknowledgement, this is where the concept of WEBHOOKS come into play:
+
+1. create an endpoint on your server that you can send data to when the customer has been charged by stripe
+2. set up webhook endpoints on your server with stripe
+3. configure webhooks using the dashboard or api keys from stripe
+4. add code to listen for events sent over HTTP POST requests coming from stripe
+5. handle these events
+6. respond back with status code 200 OK
+7. if everything goes well, stripe will keep sending those notifications forever (unless something changes)
+8. make sure your app handles duplicate payments gracefully
+9. test it out!
+
+adding meta: order_id to the post request to stripe server so that it will go to the webhook, so that we can conclude that the payment was successful, even if client closes window after payment

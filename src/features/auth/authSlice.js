@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createUser, login, signOut } from "./authAPI";
+import { createUser, login, signOut, checkAuth } from "./authAPI";
 import { updateUser } from "../user/UserAPI";
 
 const initialState = {
   loggedInUserToken: null,
   status: "idle",
   error: null,
+  userChecked: false,
 };
 
 //async thunk for the creating of new user
@@ -29,20 +30,18 @@ export const loginAsync = createAsyncThunk(
       console.log(error);
       return rejectWithValue(error);
     }
-
-    // The value we return becomes the `fulfilled` action payload
   }
 );
 
-//async thunk for the creating of new user
-// export const updateUserAsync = createAsyncThunk(
-//   "user/updateUser",
-//   async (updateData) => {
-//     const response = await updateUser(updateData);
-//     // The value we return becomes the `fulfilled` action payload
-//     return response.data;
-//   }
-// );
+//async thunk for the checking if the user is still authenticated
+export const checkAuthAsync = createAsyncThunk("user/checkAuth", async () => {
+  try {
+    const response = await checkAuth();
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 //async thunk for the creating of new user
 export const signOutUserAsync = createAsyncThunk(
@@ -85,19 +84,24 @@ export const authSlice = createSlice({
         state.status = "idle";
         state.error = action.payload;
       })
-      // .addCase(updateUserAsync.pending, (state) => {
-      //   state.status = "loading";
-      // })
-      // .addCase(updateUserAsync.fulfilled, (state, action) => {
-      //   state.status = "idle";
-      //   state.loggedInUserToken = action.payload;
-      // })
       .addCase(signOutUserAsync.pending, (state) => {
         state.status = "loading";
       })
       .addCase(signOutUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.loggedInUserToken = null;
+      })
+      .addCase(checkAuthAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(checkAuthAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.loggedInUserToken = action.payload;
+        state.userChecked = true;
+      })
+      .addCase(checkAuthAsync.rejected, (state, action) => {
+        state.status = "idle";
+        state.userChecked = true;
       });
   },
 });
@@ -105,6 +109,7 @@ export const authSlice = createSlice({
 export const { increment } = authSlice.actions;
 export const selectLoggedInUser = (state) => state.auth.loggedInUserToken; //select logged in users
 export const selectError = (state) => state.auth.error; //select errors
+export const selectUserChecked = (state) => state.auth.userChecked; //select userChecked or not
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

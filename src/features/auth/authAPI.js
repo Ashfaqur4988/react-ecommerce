@@ -32,7 +32,25 @@ export function login(loginInfo) {
         reject(error);
       }
     } catch (error) {
-      reject({ error });
+      reject(error);
+    }
+  });
+}
+
+//API to check the login user is authenticated or not
+export function checkAuth() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch("http://localhost:8080/auth/check");
+      if (response.ok) {
+        const data = await response.json();
+        resolve({ data });
+      } else {
+        const error = await response.text();
+        reject(error);
+      }
+    } catch (error) {
+      reject(error);
     }
   });
 }
