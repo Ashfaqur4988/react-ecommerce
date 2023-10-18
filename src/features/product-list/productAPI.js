@@ -2,7 +2,7 @@
 export function fetchAllProduct() {
   return new Promise(async (resolve) => {
     // TODO: we will not hard code server URL here
-    const response = await fetch("http://localhost:8080/products");
+    const response = await fetch("/products");
     const data = await response.json();
     resolve({ data });
   });
@@ -39,9 +39,7 @@ export function fetchProductByFilters(filter, sort, pagination, admin) {
   }
   return new Promise(async (resolve) => {
     // TODO: we will not hard code server URL here
-    const response = await fetch(
-      "http://localhost:8080/products?" + queryString
-    );
+    const response = await fetch("/products?" + queryString);
     const data = await response.json();
     const totalItems = await response.headers.get("X-Total-Count");
     resolve({ data: { products: data, totalItems: totalItems } });
@@ -51,7 +49,7 @@ export function fetchProductByFilters(filter, sort, pagination, admin) {
 // A mock function to mimic making an async request for data for categories
 export function fetchAllCategories() {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/category");
+    const response = await fetch("/category");
     const data = await response.json();
     resolve({ data });
   });
@@ -60,7 +58,7 @@ export function fetchAllCategories() {
 // A mock function to mimic making an async request for data for categories
 export function fetchAllBrands() {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/brands");
+    const response = await fetch("/brands");
     const data = await response.json();
     resolve({ data });
   });
@@ -69,7 +67,7 @@ export function fetchAllBrands() {
 // A mock function to mimic making an async request for data for product by Id
 export function fetchProductById(id) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/products/" + id);
+    const response = await fetch("/products/" + id);
     const data = await response.json();
     resolve({ data });
   });
@@ -78,7 +76,7 @@ export function fetchProductById(id) {
 // A mock function to mimic making an async post data of a new product
 export function addProduct(product) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/products/", {
+    const response = await fetch("/products/", {
       method: "POST",
       body: JSON.stringify(product),
       headers: { "content-Type": "application/json" },
@@ -91,14 +89,11 @@ export function addProduct(product) {
 // A mock function to mimic making an async post data of a new product
 export function updateProduct(update) {
   return new Promise(async (resolve) => {
-    const response = await fetch(
-      "http://localhost:8080/products/" + update.id,
-      {
-        method: "PATCH",
-        body: JSON.stringify(update),
-        headers: { "content-Type": "application/json" },
-      }
-    );
+    const response = await fetch("/products/" + update.id, {
+      method: "PATCH",
+      body: JSON.stringify(update),
+      headers: { "content-Type": "application/json" },
+    });
     const data = await response.json();
     resolve({ data });
   });

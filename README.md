@@ -419,5 +419,9 @@ get the payment acknowledgement, this is where the concept of WEBHOOKS come into
 
 adding meta: order_id to the post request to stripe server so that it will go to the webhook, so that we can conclude that the payment was successful, even if client closes window after payment
 
+final testing of the app after integrating the cloud db(check backend readme)
+
+now we need to replace the http://localhost:8080 with a simple slash, our routes will start from
+
 recover password, NODEMAILER:
 after testing the api

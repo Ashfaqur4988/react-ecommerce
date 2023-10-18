@@ -2,7 +2,7 @@
 //post method to send data to the api and create a new user
 export function createUser(userData) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/auth/signup", {
+    const response = await fetch("/auth/signup", {
       //had to remove s from the https for not working of the code
       method: "POST",
       body: JSON.stringify(userData),
@@ -18,7 +18,7 @@ export function createUser(userData) {
 export function login(loginInfo) {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch("/auth/login", {
         //had to remove s from the https for not working of the code
         method: "POST",
         body: JSON.stringify(loginInfo),
@@ -41,7 +41,7 @@ export function login(loginInfo) {
 export function checkAuth() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch("http://localhost:8080/auth/check");
+      const response = await fetch("/auth/check");
       if (response.ok) {
         const data = await response.json();
         resolve({ data });
@@ -59,7 +59,7 @@ export function checkAuth() {
 // export function resetPasswordRequest() {
 //   return new Promise(async (resolve, reject) => {
 //     try {
-//       const response = await fetch("http://localhost:8080/auth/check");
+//       const response = await fetch("/auth/check");
 //       if (response.ok) {
 //         const data = await response.json();
 //         resolve({ data });
