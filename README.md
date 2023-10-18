@@ -418,3 +418,6 @@ get the payment acknowledgement, this is where the concept of WEBHOOKS come into
 9. test it out!
 
 adding meta: order_id to the post request to stripe server so that it will go to the webhook, so that we can conclude that the payment was successful, even if client closes window after payment
+
+recover password, NODEMAILER:
+after testing the api
