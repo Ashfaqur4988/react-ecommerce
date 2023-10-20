@@ -421,7 +421,10 @@ adding meta: order_id to the post request to stripe server so that it will go to
 
 final testing of the app after integrating the cloud db(check backend readme)
 
-now we need to replace the http://localhost:8080 with a simple slash, our routes will start from
+now we need to replace the http://localhost:8080 with a simple slash, our routes will start from the deployed route
+change the return url in the checkoutForm of stripe, removed the local host part
+
+do the build again and then put it in the backend part
 
 recover password, NODEMAILER:
 after testing the api
