@@ -427,6 +427,8 @@ change the return url in the checkoutForm of stripe, removed the local host part
 
 removed the metadata from the frontend as it be taken care at the backend
 
+setting up proxy:"localhost:8080", now react will consider only 8080
+
 do the build again and then put it in the backend part
 
 recover password, NODEMAILER:
