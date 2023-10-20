@@ -422,7 +422,10 @@ adding meta: order_id to the post request to stripe server so that it will go to
 final testing of the app after integrating the cloud db(check backend readme)
 
 now we need to replace the http://localhost:8080 with a simple slash, our routes will start from the deployed route
-change the return url in the checkoutForm of stripe, removed the local host part
+change the return url in the checkoutForm of stripe, removed the local host part and add the vercel app url before order-success
+/orders was clashing with the backend routes so changed the name to /my-orders in app and navbar js [whenever we call api with same endpoints, the backend api gets preference]
+
+removed the metadata from the frontend as it be taken care at the backend
 
 do the build again and then put it in the backend part
 
