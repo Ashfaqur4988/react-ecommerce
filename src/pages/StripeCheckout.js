@@ -27,7 +27,7 @@ export default function StripeCheckout() {
         totalAmount: currentOrder.totalAmount,
         orderId: currentOrder.id,
       }),
-      meta: { order_id: currentOrder.id }, //this info will go to the stripe and then to the webhook
+      metadata: { order_id: currentOrder.id }, //this info will go to the stripe and then to the webhook
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
