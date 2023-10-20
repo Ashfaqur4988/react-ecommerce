@@ -427,7 +427,9 @@ change the return url in the checkoutForm of stripe, removed the local host part
 
 removed the metadata from the frontend as it be taken care at the backend
 
-setting up proxy:"localhost:8080", now react will consider only 8080
+setting up proxy:"localhost:8080", now react will consider only 8080 (only to test in the dev server)
+
+adminOrder, added payment status and payment method, made handler function to handle the status changed and added received color in switch case
 
 do the build again and then put it in the backend part
 
