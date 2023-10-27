@@ -1,5 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createUser, login, signOut, checkAuth } from "./authAPI";
+import {
+  createUser,
+  login,
+  signOut,
+  checkAuth,
+  resetPasswordRequest,
+  resetPassword,
+} from "./authAPI";
 import { updateUser } from "../user/UserAPI";
 
 const initialState = {
@@ -7,6 +14,8 @@ const initialState = {
   status: "idle",
   error: null,
   userChecked: false,
+  mailSent: false,
+  passwordReset: false,
 };
 
 //async thunk for the creating of new user
@@ -42,6 +51,34 @@ export const checkAuthAsync = createAsyncThunk("user/checkAuth", async () => {
     console.log(error);
   }
 });
+
+//async thunk for reset password mail
+export const resetPasswordRequestAsync = createAsyncThunk(
+  "user/resetPasswordRequest",
+  async (email, { rejectWithValue }) => {
+    try {
+      const response = await resetPasswordRequest(email);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+//async thunk for handling the new password
+export const resetPasswordAsync = createAsyncThunk(
+  "user/resetPassword",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await resetPassword(data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
 
 //async thunk for the creating of new user
 export const signOutUserAsync = createAsyncThunk(
@@ -102,6 +139,25 @@ export const authSlice = createSlice({
       .addCase(checkAuthAsync.rejected, (state, action) => {
         state.status = "idle";
         state.userChecked = true;
+      })
+      .addCase(resetPasswordRequestAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(resetPasswordRequestAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.mailSent = true;
+      })
+      .addCase(resetPasswordAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(resetPasswordAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.passwordReset = true;
+      })
+      .addCase(resetPasswordAsync.rejected, (state, action) => {
+        state.status = "idle";
+        state.passwordReset = false;
+        state.error = action.payload;
       });
   },
 });
@@ -110,6 +166,8 @@ export const { increment } = authSlice.actions;
 export const selectLoggedInUser = (state) => state.auth.loggedInUserToken; //select logged in users
 export const selectError = (state) => state.auth.error; //select errors
 export const selectUserChecked = (state) => state.auth.userChecked; //select userChecked or not
+export const selectMailSent = (state) => state.auth.mailSent; //select mail sent status
+export const selectPasswordReset = (state) => state.auth.passwordReset; //select password reset status
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of

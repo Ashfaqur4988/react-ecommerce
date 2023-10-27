@@ -435,3 +435,29 @@ do the build again and then put it in the backend part
 
 recover password, NODEMAILER:
 after testing the api
+copy the auth api and then and use that as a template for the forgot password api
+make the respective slice for the resetPasswordRequest api in authSlice
+inside the forgot password component call the api inside a dispatch function
+[frontend is sending the email address from the body to the server then the server will trigger the mailer api]
+make a mail sent status variable in the slice and the set it to false (default), once the action has been completed then we can set the status to true
+make a selector that will select the status
+now get the mail sent status selector and keep the value in a variable, under the error message put the condition that if mail sent true then the message will appear in the screen
+[make a corresponding api in the backend]
+
+make a new component, page and route for the password reset page
+copy the forgot password page and add the confirm password part from the sign up component
+{the security will be taken care afterwards, right now we are making the desired layout and then adding the functionality}
+make a new api in the authAPI to handle this new feature
+resetPassword api and slice is also made
+in slice put reject scenario also and use the reject with value so that we can catch the error
+use the select error and display it in ui
+a state variable is made to set the status of password reset as default false but once triggered then the status will be set to true, using this status we can flash message in the screen
+
+we need to write the backend api to handle the data and make it as a new password
+see what are the requirements of the backend api
+
+after getting the token in the query string from the server we need to extract the token, for this we shall use a hook to get query string values in react router v6, useSearchParams
+with this we can extract the token and the email from the query and store it in a const
+now dispatch the email, token and new password as an object to resetPasswordAsync, pass the object as an argument in all the depending functions in the slice and api page
+
+now go to the backend and write a function to do the resetting of password
