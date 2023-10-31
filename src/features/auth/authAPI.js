@@ -102,7 +102,17 @@ export function resetPassword(data) {
 
 //API call for signOut
 export function signOut() {
-  return new Promise(async (resolve) => {
-    resolve({ data: "success" });
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fetch("/auth/logout");
+      if (response.ok) {
+        resolve({ data: "success" });
+      } else {
+        const error = await response.text();
+        reject(error);
+      }
+    } catch (error) {
+      reject(error);
+    }
   });
 }

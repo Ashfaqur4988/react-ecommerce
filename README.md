@@ -461,3 +461,18 @@ with this we can extract the token and the email from the query and store it in 
 now dispatch the email, token and new password as an object to resetPasswordAsync, pass the object as an argument in all the depending functions in the slice and api page
 
 now go to the backend and write a function to do the resetting of password
+
+SIGN OUT:
+make an api call to the backend and it will remove the token
+then update the state by setting the user to null
+make an api signOut, route '/auth/logout'
+
+backend make an api
+
+issue in the client side as the api was expecting json but got just the status so it has shown the blank page and the has been rejected
+to solve this we need to change the resolve to object with data:'success' in the client side authAPI and remove the json()
+
+Admin Dashboard:
+create a new table header to add the time stamp to see the update activities
+and added corresponding table data where we will show the dates of ordered and updated
+applying the sorting code in the dates
