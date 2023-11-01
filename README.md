@@ -476,3 +476,22 @@ Admin Dashboard:
 create a new table header to add the time stamp to see the update activities
 and added corresponding table data where we will show the dates of ordered and updated
 applying the sorting code in the dates
+
+admin Product Form:
+we added two checkbox fields for colors and sizes (static)
+then put a return statement after the handleSubmit console log, to see what are coming from the data
+then checking in the setValue whether the values are getting set or not
+after the initial testing of the above
+adding an id to all the colors elements for clear data storage, unique id
+to save the value to the database / to send the data of the colors we need to put the logic like this,
+save the data in product then map product.colors, apply the find function in all the items, find color.id === color and save it in the product.colors field
+product.colors = product.colors.map(color => colors.find(clr=>clr.id === color[is the value of the checkbox]));
+same for size
+to test it then, put the return statement after the console log of product
+we can see we got all the required fields in the object
+now remove the return and then test by making a new product
+products with colors and sizes are being created
+
+in ProductDetail page we are going to remove the static color and size data as we are going to get it from the db
+now in the colors and size will be product.colors, product.sizes
+also add the short circuit that when there is product.colors && product.colors.length only then the color and size form will appear

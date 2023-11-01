@@ -32,6 +32,38 @@ const ProductForm = () => {
   const params = useParams();
   const alert = useAlert();
 
+  const colors = [
+    {
+      name: "White",
+      class: "bg-white",
+      selectedClass: "ring-gray-400",
+      id: "White",
+    },
+    {
+      name: "Gray",
+      class: "bg-gray-200",
+      selectedClass: "ring-gray-400",
+      id: "Gray",
+    },
+    {
+      name: "Black",
+      class: "bg-gray-900",
+      selectedClass: "ring-gray-900",
+      id: "Black",
+    },
+  ];
+
+  const sizes = [
+    { name: "XXS", inStock: false, id: "XXS" },
+    { name: "XS", inStock: true, id: "XS" },
+    { name: "S", inStock: true, id: "S" },
+    { name: "M", inStock: true, id: "M" },
+    { name: "L", inStock: true, id: "L" },
+    { name: "XL", inStock: true, id: "XL" },
+    { name: "2XL", inStock: true, id: "2XL" },
+    { name: "3XL", inStock: true, id: "3XL" },
+  ];
+
   //calling again here just to be sure and get all the details of the selected id
   useEffect(() => {
     if (params.id) {
@@ -74,6 +106,7 @@ const ProductForm = () => {
         noValidate
         onSubmit={handleSubmit((data) => {
           console.log(data);
+          //return;
           //creation of the object to be sent
           const product = { ...data };
           product.images = [
@@ -84,6 +117,12 @@ const ProductForm = () => {
             product.thumbnail,
           ];
           product.rating = 0;
+          product.colors = product.colors.map((color) =>
+            colors.find((clr) => clr.id === color)
+          );
+          product.sizes = product.sizes.map((size) =>
+            sizes.find((sz) => sz.id === size)
+          );
           delete product["image1"];
           delete product["image2"];
           delete product["image3"];
@@ -95,6 +134,7 @@ const ProductForm = () => {
           //object creation ended
 
           console.log(product);
+          //return;
 
           //if condition to check whether to update or to add a new product
           if (params.id) {
@@ -233,7 +273,7 @@ const ProductForm = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-3">
+              <div className="sm:col-span-full">
                 <label
                   htmlFor="brand"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -258,7 +298,55 @@ const ProductForm = () => {
                 </div>
               </div>
 
-              <div className="sm:col-span-3">
+              <div className="sm:col-span-full">
+                <label
+                  htmlFor="colors"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Colors
+                </label>
+                <div className="mt-2">
+                  {colors.map((color) => {
+                    return (
+                      <>
+                        <input
+                          type="checkbox"
+                          key={color.id}
+                          {...register("colors", {})}
+                          value={color.id}
+                        />{" "}
+                        {color.name}
+                      </>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="sm:col-span-full">
+                <label
+                  htmlFor="sizes"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Sizes
+                </label>
+                <div className="mt-2">
+                  {sizes.map((size) => {
+                    return (
+                      <>
+                        <input
+                          type="checkbox"
+                          key={size.id}
+                          {...register("sizes", {})}
+                          value={size.id}
+                        />{" "}
+                        {size.name}
+                      </>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="sm:col-span-full">
                 <label
                   htmlFor="category"
                   className="block text-sm font-medium leading-6 text-gray-900"
