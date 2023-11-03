@@ -495,3 +495,17 @@ products with colors and sizes are being created
 in ProductDetail page we are going to remove the static color and size data as we are going to get it from the db
 now in the colors and size will be product.colors, product.sizes
 also add the short circuit that when there is product.colors && product.colors.length only then the color and size form will appear
+sometimes 00 may appear in place of the color and sizes, reason is that we need to put the length greater than 0 in the short circuit. [sometimes the length 0 appears in the UI]
+
+need to update the cart's schema for showing the colors and sizes (go to the backend)
+like we added the input for image files we can use the same input to add the highlights
+setvalues also added for highlights sizes colors
+before saving the highlights we are putting it into an array and then dispatching the whole product data to the api
+now in the product detail page we added the highlights from the product fetched from the db and deleted the static highlights
+also added the short circuit for safety and not crash the app, if highlights present the show the highlight section else donot render
+ONE ISSUE: in the edit product of admin the colors and sizes are not appearing selected in the the UI, even after the setValues. To solve this we have to add the sizes and colors coming from the db in the product details, so we need to change the code in the productForm file
+we need to map the sizes and colors array in the setValues part then we can get their values checked
+
+ADMIN PAGE RELOAD 'ROLE' issue:
+in protected admin file we have used role in short circuit, which was unable to load
+in this file the user in second part is changed to userInfo and the issue is resolved

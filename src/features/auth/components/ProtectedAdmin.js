@@ -11,7 +11,7 @@ const ProtectedAdmin = ({ children }) => {
     return <Navigate to="/login" replace={true}></Navigate>;
   }
   //check if the user exist and what is the role
-  if (user && userInfo.role !== "admin") {
+  if (userInfo && userInfo.role !== "admin") {
     return <Navigate to="/login" replace={true}></Navigate>;
   }
   return children;

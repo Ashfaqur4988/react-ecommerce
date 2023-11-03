@@ -19,15 +19,6 @@ import { CirclesWithBar } from "react-loader-spinner";
 //react alert code
 import { useAlert } from "react-alert";
 
-//TODO: in server data will add color, sizes, highlights
-
-const highlights = [
-  "Hand cut and sewn locally",
-  "Dyed with our proprietary colors",
-  "Pre-washed & pre-shrunk",
-  "Ultra-soft 100% cotton",
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -205,7 +196,7 @@ export default function Example() {
 
               <form className="mt-10">
                 {/* Colors */}
-                {product.colors && product.colors.length && (
+                {product.colors && product.colors.length > 0 && (
                   <div>
                     <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
@@ -218,39 +209,38 @@ export default function Example() {
                         Choose a color
                       </RadioGroup.Label>
                       <div className="flex items-center space-x-3">
-                        {product.colors &&
-                          product.colors.map((color) => (
-                            <RadioGroup.Option
-                              key={color.name}
-                              value={color}
-                              className={({ active, checked }) =>
-                                classNames(
-                                  color.selectedClass,
-                                  active && checked ? "ring ring-offset-1" : "",
-                                  !active && checked ? "ring-2" : "",
-                                  "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
-                                )
-                              }
-                            >
-                              <RadioGroup.Label as="span" className="sr-only">
-                                {color.name}
-                              </RadioGroup.Label>
-                              <span
-                                aria-hidden="true"
-                                className={classNames(
-                                  color.class,
-                                  "h-8 w-8 rounded-full border border-black border-opacity-10"
-                                )}
-                              />
-                            </RadioGroup.Option>
-                          ))}
+                        {product.colors.map((color) => (
+                          <RadioGroup.Option
+                            key={color.name}
+                            value={color}
+                            className={({ active, checked }) =>
+                              classNames(
+                                color.selectedClass,
+                                active && checked ? "ring ring-offset-1" : "",
+                                !active && checked ? "ring-2" : "",
+                                "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
+                              )
+                            }
+                          >
+                            <RadioGroup.Label as="span" className="sr-only">
+                              {color.name}
+                            </RadioGroup.Label>
+                            <span
+                              aria-hidden="true"
+                              className={classNames(
+                                color.class,
+                                "h-8 w-8 rounded-full border border-black border-opacity-10"
+                              )}
+                            />
+                          </RadioGroup.Option>
+                        ))}
                       </div>
                     </RadioGroup>
                   </div>
                 )}
 
                 {/* Sizes */}
-                {product.sizes && product.sizes.length && (
+                {product.sizes && product.sizes.length > 0 && (
                   <div className="mt-10">
                     <div className="flex items-center justify-between">
                       <h3 className="text-sm font-medium text-gray-900">
@@ -357,21 +347,26 @@ export default function Example() {
                 </div>
               </div>
 
-              <div className="mt-10">
-                <h3 className="text-sm font-medium text-gray-900">
-                  Highlights
-                </h3>
+              {product.highlights && (
+                <div className="mt-10">
+                  <h3 className="text-sm font-medium text-gray-900">
+                    Highlights
+                  </h3>
 
-                <div className="mt-4">
-                  <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                    {highlights.map((highlight) => (
-                      <li key={highlight} className="text-gray-400">
-                        <span className="text-gray-600">{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mt-4">
+                    <ul
+                      role="list"
+                      className="list-disc space-y-2 pl-4 text-sm"
+                    >
+                      {product.highlights.map((highlight) => (
+                        <li key={highlight} className="text-gray-400">
+                          <span className="text-gray-600">{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Details</h2>
