@@ -12,7 +12,7 @@ import {
   fetchCategoriesAsync,
   selectStatus,
 } from "../productSlice";
-import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
+import { ITEMS_PER_PAGE } from "../../../app/constants";
 
 //imports for category filter
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
@@ -508,7 +508,7 @@ function ProductGrid({ products, status }) {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-gray-900">
-                      ${discountedPrice(product)}
+                      ${product.discountPrice}
                     </p>
                     <p className="text-sm font-medium line-through text-gray-400">
                       ${product.price}

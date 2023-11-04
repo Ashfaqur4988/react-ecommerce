@@ -10,7 +10,6 @@ import {
 } from "../../product-list/productSlice";
 import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/cartSlice";
-import { discountedPrice } from "../../../app/constants";
 
 const highlights = [
   "Hand cut and sewn locally",
@@ -136,7 +135,7 @@ export default function AdminProductDetail() {
               </p>
 
               <p className="text-3xl tracking-tight text-gray-900">
-                ${discountedPrice(product)}
+                ${product.discountPrice}
               </p>
 
               {/* Reviews */}

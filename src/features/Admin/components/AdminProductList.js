@@ -472,10 +472,7 @@ function ProductGrid({ products }) {
                     </div>
                     <div>
                       <p className="text-sm font-medium text-gray-900">
-                        $
-                        {Math.round(
-                          product.price * (1 - product.discountPercentage / 100)
-                        )}
+                        ${product.discountPrice}
                       </p>
                       <p className="text-sm font-medium line-through text-gray-400">
                         ${product.price}

@@ -14,7 +14,6 @@ import {
   selectCurrentOrder,
 } from "../features/order/orderSlice";
 import { selectUserInfo } from "../features/user/UserSlice";
-import { discountedPrice } from "../app/constants";
 
 const CheckOutPage = () => {
   const [open, setOpen] = useState(true);
@@ -38,7 +37,7 @@ const CheckOutPage = () => {
   const [paymentMethod, setPaymentMethod] = useState("cash");
 
   const totalAmount = items.reduce(
-    (amount, item) => discountedPrice(item.product) * item.quantity + amount,
+    (amount, item) => item.product.discountPrice * item.quantity + amount,
     0
   );
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
@@ -403,7 +402,7 @@ const CheckOutPage = () => {
                                 </a>
                               </h3>
                               <p className="ml-4">
-                                $ {discountedPrice(item.product)}
+                                $ {item.product.discountPrice}
                               </p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">

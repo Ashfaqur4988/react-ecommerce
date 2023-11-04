@@ -7,7 +7,6 @@ import {
   selectUserOrdersStatus,
 } from "../UserSlice";
 import { Link } from "react-router-dom";
-import { discountedPrice } from "../../../app/constants";
 import { CirclesWithBar } from "react-loader-spinner";
 
 const UserOrders = () => {
@@ -73,7 +72,7 @@ const UserOrders = () => {
                                 </a>
                               </h3>
                               <p className="ml-4">
-                                $ {discountedPrice(item.product)}
+                                $ {item.product.discountPrice}
                               </p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
