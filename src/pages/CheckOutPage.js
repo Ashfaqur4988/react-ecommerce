@@ -78,7 +78,6 @@ const CheckOutPage = () => {
     } else {
       alert("Please select address and choose a method!");
     }
-    //TODO: clear cart after order
     //TODO: on server change the stock number of items
   };
 

@@ -12,8 +12,6 @@ import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/cartSlice";
 import { discountedPrice } from "../../../app/constants";
 
-//TODO: in server data will add highlights
-
 const highlights = [
   "Hand cut and sewn locally",
   "Dyed with our proprietary colors",

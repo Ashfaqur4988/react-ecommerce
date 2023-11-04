@@ -68,7 +68,6 @@ export function AdminProductList() {
 
   //filterHandle function
   const handleFilter = (e, section, option) => {
-    //TODO: on server it will support multiple values
     console.log(e.target.checked);
     const newFilter = { ...filter };
     //logic to uncheck & check

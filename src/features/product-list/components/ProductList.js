@@ -96,7 +96,6 @@ export function ProductList() {
 
   //filterHandle function
   const handleFilter = (e, section, option) => {
-    //TODO: on server it will support multiple values
     console.log(e.target.checked);
     const newFilter = { ...filter };
     //logic to uncheck & check
@@ -137,6 +136,7 @@ export function ProductList() {
     setPage(page);
   };
 
+  //filter code
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
     dispatch(fetchProductByFiltersAsync({ filter, sort, pagination })); //if both empty then it will fetch the entire data

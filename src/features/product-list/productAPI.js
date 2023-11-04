@@ -13,7 +13,6 @@ export function fetchProductByFilters(filter, sort, pagination, admin) {
   //filter object = {category: ["smartphone","laptop]"}
   //sort object = {_sort: "price", _order:"desc"}
   //pagination = {_page:1, _limit:10} //_page=1&_limit=10
-  //TODO: on server we will support multiple value
   // TODO: Server will filter the deleted products (will not send)
   let queryString = ""; //making an empty string
   for (let key in filter) {
@@ -21,8 +20,8 @@ export function fetchProductByFilters(filter, sort, pagination, admin) {
     const categoryValues = filter[key]; //complete array saved
     if (categoryValues.length) {
       //checking if the length is empty or not
-      const lastCategoryValue = categoryValues[categoryValues.length - 1]; //picking up the last value
-      queryString = queryString + `${key}=${lastCategoryValue}&`;
+      //const lastCategoryValue = categoryValues[categoryValues.length - 1]; //picking up the last value
+      queryString = queryString + `${key}=${categoryValues}&`;
     }
   }
 

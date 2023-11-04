@@ -509,3 +509,10 @@ we need to map the sizes and colors array in the setValues part then we can get 
 ADMIN PAGE RELOAD 'ROLE' issue:
 in protected admin file we have used role in short circuit, which was unable to load
 in this file the user in second part is changed to userInfo and the issue is resolved
+
+MULTIPLE CATEGORIES, BRANDS, AND OTHER FILTER:
+we need to make changes in backend as well as in the frontend
+from frontend we are sending the array of required filters but in backend we sending the last value of the selected check box
+in the productAPI, fetchProductByFilters we sending the last value of the filters, so we need to send the array not the last value of the array
+we need to remove the lastValue variable and in the queryString instead of lastValues we will place the categoryValues
+Go to backend to use the $in query
