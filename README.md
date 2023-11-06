@@ -516,3 +516,5 @@ from frontend we are sending the array of required filters but in backend we sen
 in the productAPI, fetchProductByFilters we sending the last value of the filters, so we need to send the array not the last value of the array
 we need to remove the lastValue variable and in the queryString instead of lastValues we will place the categoryValues
 Go to backend to use the $in query
+
+removed the discountedPrice function and used the db data
