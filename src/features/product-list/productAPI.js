@@ -1,7 +1,6 @@
 // A mock function to mimic making an async request for data
 export function fetchAllProduct() {
   return new Promise(async (resolve) => {
-    // TODO: we will not hard code server URL here
     const response = await fetch("/products");
     const data = await response.json();
     resolve({ data });
@@ -13,7 +12,7 @@ export function fetchProductByFilters(filter, sort, pagination, admin) {
   //filter object = {category: ["smartphone","laptop]"}
   //sort object = {_sort: "price", _order:"desc"}
   //pagination = {_page:1, _limit:10} //_page=1&_limit=10
-  // TODO: Server will filter the deleted products (will not send)
+
   let queryString = ""; //making an empty string
   for (let key in filter) {
     //traversing through the objects
@@ -37,7 +36,6 @@ export function fetchProductByFilters(filter, sort, pagination, admin) {
     queryString = queryString + `admin=true`;
   }
   return new Promise(async (resolve) => {
-    // TODO: we will not hard code server URL here
     const response = await fetch("/products?" + queryString);
     const data = await response.json();
     const totalItems = await response.headers.get("X-Total-Count");

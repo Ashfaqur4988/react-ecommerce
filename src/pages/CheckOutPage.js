@@ -73,7 +73,6 @@ const CheckOutPage = () => {
         status: "pending", //other status can be delivered, received
       };
       dispatch(createOrderAsync(order));
-      //TODO: redirect to order-success page
     } else {
       alert("Please select address and choose a method!");
     }

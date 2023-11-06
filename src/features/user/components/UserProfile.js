@@ -10,8 +10,6 @@ export function UserProfile() {
   //address needs to be edited
   const [showAddressForm, setShowAddressForm] = useState(false);
 
-  //TODO: payment part will add later
-
   const {
     register,
     handleSubmit,

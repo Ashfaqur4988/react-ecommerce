@@ -28,7 +28,6 @@ export function updateUser(updateData) {
       headers: { "content-type": "application/json" },
     });
     const data = await response.json();
-    // TODO: on server it will only return some info (not password)
     resolve({ data });
   });
 }

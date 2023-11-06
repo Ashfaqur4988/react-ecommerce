@@ -7,7 +7,6 @@ export function addToCart(items) {
       headers: { "content-type": "application/json" },
     });
     const data = await response.json();
-    // TODO: on server it will only return some info (not password)
     resolve({ data });
   });
 }
@@ -15,7 +14,6 @@ export function addToCart(items) {
 // fetching cart items by user ids
 export function fetchItemsByUserId() {
   return new Promise(async (resolve) => {
-    // TODO: we will not hard code server URL here
     const response = await fetch("/cart");
     const data = await response.json();
     resolve({ data });

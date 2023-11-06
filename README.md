@@ -517,4 +517,11 @@ in the productAPI, fetchProductByFilters we sending the last value of the filter
 we need to remove the lastValue variable and in the queryString instead of lastValues we will place the categoryValues
 Go to backend to use the $in query
 
-removed the discountedPrice function and used the db data
+removed the discountedPrice function and used the db data, use the field from backend
+
+STOCK ISSUE:
+need to make stock less after every successful order
+make the backend changes
+
+ALERT:
+should be showed only after the success of corresponding api

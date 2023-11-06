@@ -47,7 +47,7 @@ export default function Example() {
         newItem.size = selectedSize;
       }
       dispatch(addToCartAsync(newItem));
-      //TODO: it will be based on the server response of backend
+
       alert.success("Item added in cart");
     } else {
       alert.show("Item already added in cart");

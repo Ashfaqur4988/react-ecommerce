@@ -140,7 +140,6 @@ export function ProductList() {
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
     dispatch(fetchProductByFiltersAsync({ filter, sort, pagination })); //if both empty then it will fetch the entire data
-    // TODO: Server will filter the deleted products
   }, [dispatch, filter, sort, page]);
 
   useEffect(() => {

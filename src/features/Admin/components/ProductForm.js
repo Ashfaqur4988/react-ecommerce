@@ -164,7 +164,6 @@ const ProductForm = () => {
           } else {
             dispatch(addProductAsync(product));
             alert.success("Product Created Successfully");
-            //TODO: check whether api success or failed
             reset();
           }
         })}
